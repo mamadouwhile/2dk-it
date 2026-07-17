@@ -1,36 +1,41 @@
 [
   {
-    "name": "Refonte de site corporate",
-    "type": "Site vitrine",
-    "context": "Entreprise B2B avec une présence web trop dense et peu lisible.",
-    "problem": "Le message principal n’était pas compris assez vite et la prise de contact restait faible.",
-    "solution": "Recentrage de l’arborescence, hiérarchie plus nette et amélioration du parcours vers le contact.",
-    "result": "Une lecture plus claire, une perception plus professionnelle et une navigation plus directe.",
-    "imageLabel": "Mockup site corporate",
-    "imageAccent": "from-blue-500/20 via-slate-900 to-slate-950",
-    "href": "/contact"
+    "name": "Westafine",
+    "type": "Marque & site e-commerce",
+    "context": "Marque de boissons premium ouest-africaines (bissap, gingembre, tamarin) en phase de lancement, avec une forte présence TikTok/Instagram mais aucune vitrine web.",
+    "problem": "Impossible de convertir l'audience réseaux sociaux en clients B2B (épiceries, distributeurs) faute de site pour présenter la gamme et centraliser le contact commercial.",
+    "solution": "Développement sur mesure (React, Node.js, Express, PostgreSQL) avec identité noir et or, présentation produit, grille tarifaire dégressive et formulaire de contact.",
+    "result": "Une image de marque premium en ligne, un point de contact commercial structuré et un support concret pour la prospection distributeurs.",
+    "imageLabel": "Mockup site Westafine",
+    "imageAccent": "from-amber-500/20 via-slate-900 to-slate-950",
+    "imageSrc": "/projects/westafine-desktop.png",
+    "imageSrcMobile": "/projects/westafine-mobile.png",
+    "href": "https://westafinedrinks.com"
   },
   {
-    "name": "Support et évolution web",
-    "type": "Support IT",
-    "context": "Structure en production avec besoin d’accompagnement régulier et de corrections rapides.",
-    "problem": "Les demandes arrivaient sans cadre clair et les évolutions prenaient trop de temps à qualifier.",
-    "solution": "Mise en place d’un suivi simple, d’un périmètre plus net et d’un pilotage orienté fiabilité.",
-    "result": "Un support plus réactif et une meilleure stabilité dans le quotidien.",
-    "imageLabel": "Tableau de suivi technique",
-    "imageAccent": "from-slate-700/30 via-slate-900 to-slate-950",
-    "href": "/services"
+    "name": "Enerchoice",
+    "type": "Plateforme de recrutement",
+    "context": "Plateforme de recrutement ayant besoin d'un site performant pour diffuser ses offres d'emploi et construire sa marque employeur.",
+    "problem": "Les offres d'emploi n'étaient pas visibles sur Google, faute de structure technique adaptée au référencement.",
+    "solution": "Frontend React et backend Express/MongoDB, avec SEO optimisé : données structurées JSON-LD (JobPosting) et balises dynamiques par offre.",
+    "result": "Une meilleure visibilité des annonces dans les moteurs de recherche et une infrastructure fiable pour la gestion des candidatures.",
+    "imageLabel": "Mockup plateforme Enerchoice",
+    "imageAccent": "from-emerald-500/20 via-slate-900 to-slate-950",
+    "imageSrc": "/projects/enerchoice-desktop.png",
+    "imageSrcMobile": "/projects/enerchoice-mobile.png",
+    "href": "/projets/enerchoice"
   },
   {
-    "name": "Plateforme de présentation produit",
-    "type": "Site intermédiaire",
-    "context": "Offre complexe à expliquer avec besoin de rassurer plus efficacement.",
-    "problem": "Le site devait présenter davantage de preuves et mieux accompagner la décision.",
-    "solution": "Ajout de sections de réassurance, d’éléments de preuve et d’un parcours plus structuré.",
-    "result": "Un discours plus crédible, plus lisible et mieux armé pour convertir.",
-    "imageLabel": "Interface produit sobre",
-    "imageAccent": "from-blue-500/15 via-slate-900 to-slate-950",
-    "href": "/contact"
+    "name": "Re-Commencer",
+    "type": "Site associatif",
+    "context": "Association à but non lucratif ayant besoin d'une présence en ligne claire pour présenter sa mission et être conforme légalement.",
+    "problem": "Aucun site pour raconter l'histoire de l'association et rassurer les visiteurs sur sa légitimité (mentions légales, RNA, SIRET).",
+    "solution": "Site développé en React/Vite/Tailwind avec backend Supabase, pages légales complètes, page Histoire restructurée et design épuré centré sur la mission.",
+    "result": "Une présence en ligne crédible et conforme, renforçant la confiance des visiteurs et partenaires.",
+    "imageLabel": "Mockup site Re-Commencer",
+    "imageAccent": "from-rose-500/15 via-slate-900 to-slate-950",
+    "imageSrc": "/projects/re-commencer-desktop.png",
+    "imageSrcMobile": "/projects/re-commencer-mobile.png",
+    "href": "/projets/re-commencer"
   }
 ]
-

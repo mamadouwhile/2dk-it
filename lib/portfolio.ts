@@ -12,6 +12,9 @@ export type PortfolioProject = {
   imageLabel: string;
   imageAccent: string;
   href?: string;
+  imageSrc?: string;
+  imageSrcMobile?: string;
+  imageSrcDetail?: string;
 };
 
 function isPortfolioProject(value: unknown): value is PortfolioProject {
@@ -38,7 +41,16 @@ function isPortfolioProject(value: unknown): value is PortfolioProject {
     return false;
   }
 
-  return value.href === undefined || typeof value.href === "string";
+  const optionalStringKeys: Array<keyof PortfolioProject> = [
+    "href",
+    "imageSrc",
+    "imageSrcMobile",
+    "imageSrcDetail",
+  ];
+
+  return optionalStringKeys.every(
+    (key) => value[key] === undefined || typeof value[key] === "string",
+  );
 }
 
 function isPortfolioProjects(value: unknown): value is PortfolioProject[] {
@@ -50,4 +62,3 @@ export function loadPortfolioProjects(): PortfolioProject[] {
 }
 
 export const portfolioProjects = loadPortfolioProjects();
-
