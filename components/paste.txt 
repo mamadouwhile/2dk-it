@@ -1,0 +1,2156 @@
+
+
+Apropos
+« import { PageShell } from "@/components/page-shell";
+import { Badge, Tag } from "@/components/ui/badge";
+import { Callout } from "@/components/ui/callout";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { ContactForm } from "@/components/contact-form";
+import { StructuredData } from "@/components/structured-data";
+import { siteConfig } from "@/lib/site";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata(
+  "Contact",
+  "Contactez 2DK IT avec un formulaire simple, fiable et crédible.",
+  "/contact",
+);
+
+const contactStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact 2DK IT",
+  url: "https://www.2dk-it.fr/contact",
+  description:
+    "Contactez 2DK IT avec un formulaire simple, fiable et crédible.",
+  mainEntity: {
+    "@type": "Organization",
+    name: "2DK IT",
+    url: "https://www.2dk-it.fr/",
+    email: "contact@2dk-it.fr",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: "contact@2dk-it.fr",
+      availableLanguage: ["fr"],
+    },
+  },
+  inLanguage: "fr-FR",
+};
+
+export default function ContactPage() {
+  return (
+    <PageShell
+      eyebrow="Contact"
+      title="Une page de contact pensée pour convertir sans friction"
+      description="Coordonnées, délai de réponse, RGPD clair et formulaire validé côté client comme côté serveur."
+    >
+      <StructuredData data={contactStructuredData} />
+
+      <div className="flex flex-col gap-14 lg:gap-18">
+        <div className="flex flex-wrap items-center gap-3">
+          <Badge tone="accent">Lead qualifié</Badge>
+          <Tag>Réponse rapide</Tag>
+          <Tag>Contact B2B</Tag>
+        </div>
+
+        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="space-y-4">
+            <p className="ds-eyebrow">Coordonnées</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Un contact direct, avec une réponse claire et rapide.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              {siteConfig.tagline}
+            </p>
+
+            <Callout tone="accent" className="space-y-3">
+              <p className="ds-kicker">Délai de réponse</p>
+              <p className="text-sm leading-6 text-slate-100">
+                {siteConfig.contactDetails.responseTime}
+              </p>
+              <p className="text-sm leading-6 text-slate-100">{siteConfig.contactDetails.availability}</p>
+            </Callout>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            {siteConfig.contactLines.map((line) => (
+              <Card key={line.label}>
+                <CardHeader>
+                  <Tag>{line.label}</Tag>
+                  <h3 className="ds-subheading text-xl">{line.label}</h3>
+                </CardHeader>
+                <CardBody>
+                  <p className="text-sm leading-6 text-slate-300">{line.value}</p>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <Separator />
+
+        <section className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+          <Card>
+            <CardHeader>
+              <Tag>Formulaire</Tag>
+              <h2 className="ds-subheading text-xl">Demande de contact</h2>
+            </CardHeader>
+            <CardBody>
+              <ContactForm />
+
+              <Callout tone="neutral" className="mt-6">
+                <p className="text-sm leading-6 text-slate-100">
+                  Mention RGPD: vos données sont utilisées uniquement pour traiter votre demande et vous recontacter.
+                </p>
+              </Callout>
+            </CardBody>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <Tag>Coordonnées</Tag>
+              <h2 className="ds-subheading text-xl">Informations utiles</h2>
+            </CardHeader>
+            <CardBody className="space-y-4">
+              <div className="space-y-3 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                  Email professionnel
+                </p>
+                <p className="text-base font-medium text-white">{siteConfig.contactDetails.email}</p>
+                <Separator className="my-4" />
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                  Téléphone
+                </p>
+                <p className="text-base font-medium text-white">{siteConfig.contactDetails.phone}</p>
+              </div>
+
+              <Callout>
+                <p className="text-sm leading-6 text-slate-200">
+                  Le formulaire est protégé par un champ anti-spam discret et une validation côté navigateur et serveur.
+                </p>
+              </Callout>
+            </CardBody>
+          </Card>
+        </section>
+      </div>
+    </PageShell>
+  );
+}
+«  
+Cgu :  «  import type { Metadata } from "next";
+import Link from "next/link";
+
+import { LegalPage } from "@/components/legal-page";
+import { createPageMetadata } from "@/lib/seo";
+import { companyName } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata(
+  "CGU",
+  "Conditions générales d’utilisation de 2DK IT, structurées pour être complétées facilement.",
+  "/cgu",
+);
+
+export default function TermsPage() {
+  return (
+    <LegalPage
+      eyebrow="CGU"
+      title="Conditions générales d’utilisation"
+      description="Ces CGU encadrent l’utilisation du site et des formulaires de 2DK IT."
+      lastUpdated="21 juin 2026"
+    >
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">1. Objet</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Les présentes conditions définissent les règles d’accès et d’utilisation du site exploité par
+          <strong className="text-white"> {companyName}</strong>, ainsi que les
+          responsabilités applicables lors de la navigation ou de l’envoi d’une demande.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">2. Utilisation du site</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          L’utilisateur s’engage à fournir des informations exactes et à utiliser le site dans le respect de la loi
+          et des présentes conditions.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">3. Disponibilité et responsabilité</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          2DK IT s’efforce d’assurer un accès stable au site, sans garantie absolue de disponibilité continue.
+          Les informations sont fournies à titre indicatif et peuvent évoluer.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">4. Modification des CGU</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Les présentes CGU peuvent être modifiées à tout moment. La date de mise à jour devra être ajustée en
+          conséquence.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">5. Documents associés</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Voir aussi les <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/mentions-legales">mentions légales</Link>, la <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/politique-de-confidentialite">politique de confidentialité</Link> et la <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/politique-de-cookies">politique de cookies</Link>.
+        </p>
+      </section>
+    </LegalPage>
+  );
+}
+« 
+
+Contact :  « import { PageShell } from "@/components/page-shell";
+import { Badge, Tag } from "@/components/ui/badge";
+import { Callout } from "@/components/ui/callout";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { ContactForm } from "@/components/contact-form";
+import { StructuredData } from "@/components/structured-data";
+import { siteConfig } from "@/lib/site";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata(
+  "Contact",
+  "Contactez 2DK IT avec un formulaire simple, fiable et crédible.",
+  "/contact",
+);
+
+const contactStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact 2DK IT",
+  url: "https://www.2dk-it.fr/contact",
+  description:
+    "Contactez 2DK IT avec un formulaire simple, fiable et crédible.",
+  mainEntity: {
+    "@type": "Organization",
+    name: "2DK IT",
+    url: "https://www.2dk-it.fr/",
+    email: "contact@2dk-it.fr",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: "contact@2dk-it.fr",
+      availableLanguage: ["fr"],
+    },
+  },
+  inLanguage: "fr-FR",
+};
+
+export default function ContactPage() {
+  return (
+    <PageShell
+      eyebrow="Contact"
+      title="Une page de contact pensée pour convertir sans friction"
+      description="Coordonnées, délai de réponse, RGPD clair et formulaire validé côté client comme côté serveur."
+    >
+      <StructuredData data={contactStructuredData} />
+
+      <div className="flex flex-col gap-14 lg:gap-18">
+        <div className="flex flex-wrap items-center gap-3">
+          <Badge tone="accent">Lead qualifié</Badge>
+          <Tag>Réponse rapide</Tag>
+          <Tag>Contact B2B</Tag>
+        </div>
+
+        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="space-y-4">
+            <p className="ds-eyebrow">Coordonnées</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Un contact direct, avec une réponse claire et rapide.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              {siteConfig.tagline}
+            </p>
+
+            <Callout tone="accent" className="space-y-3">
+              <p className="ds-kicker">Délai de réponse</p>
+              <p className="text-sm leading-6 text-slate-100">
+                {siteConfig.contactDetails.responseTime}
+              </p>
+              <p className="text-sm leading-6 text-slate-100">{siteConfig.contactDetails.availability}</p>
+            </Callout>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            {siteConfig.contactLines.map((line) => (
+              <Card key={line.label}>
+                <CardHeader>
+                  <Tag>{line.label}</Tag>
+                  <h3 className="ds-subheading text-xl">{line.label}</h3>
+                </CardHeader>
+                <CardBody>
+                  <p className="text-sm leading-6 text-slate-300">{line.value}</p>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <Separator />
+
+        <section className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+          <Card>
+            <CardHeader>
+              <Tag>Formulaire</Tag>
+              <h2 className="ds-subheading text-xl">Demande de contact</h2>
+            </CardHeader>
+            <CardBody>
+              <ContactForm />
+
+              <Callout tone="neutral" className="mt-6">
+                <p className="text-sm leading-6 text-slate-100">
+                  Mention RGPD: vos données sont utilisées uniquement pour traiter votre demande et vous recontacter.
+                </p>
+              </Callout>
+            </CardBody>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <Tag>Coordonnées</Tag>
+              <h2 className="ds-subheading text-xl">Informations utiles</h2>
+            </CardHeader>
+            <CardBody className="space-y-4">
+              <div className="space-y-3 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                  Email professionnel
+                </p>
+                <p className="text-base font-medium text-white">{siteConfig.contactDetails.email}</p>
+                <Separator className="my-4" />
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                  Téléphone
+                </p>
+                <p className="text-base font-medium text-white">{siteConfig.contactDetails.phone}</p>
+              </div>
+
+              <Callout>
+                <p className="text-sm leading-6 text-slate-200">
+                  Le formulaire est protégé par un champ anti-spam discret et une validation côté navigateur et serveur.
+                </p>
+              </Callout>
+            </CardBody>
+          </Card>
+        </section>
+      </div>
+    </PageShell>
+  );
+}
+« 
+Mentions-legales :  « import type { Metadata } from "next";
+import Link from "next/link";
+
+import { LegalPage } from "@/components/legal-page";
+import { createPageMetadata } from "@/lib/seo";
+import { companyAddress, companyName, companySiren, dpoEmail, hostingProvider, siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata(
+  "Mentions légales",
+  "Mentions légales de 2DK IT, présentées dans un format clair et facile à compléter.",
+  "/mentions-legales",
+);
+
+export default function LegalNoticePage() {
+  return (
+    <LegalPage
+      eyebrow="Mentions légales"
+      title="Mentions légales"
+      description="Ce document rassemble les informations juridiques essentielles du site 2DK IT."
+      lastUpdated="21 juin 2026"
+    >
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">1. Éditeur du site</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Le site est édité par <strong className="text-white">{companyName}</strong>, dont le siège social est situé à
+          <strong className="text-white"> {companyAddress}</strong>.
+        </p>
+        <p className="text-sm leading-7 text-slate-300">
+          SIREN : <strong className="text-white">{companySiren}</strong>. Pour toute demande, vous pouvez écrire à
+          <strong className="text-white"> {dpoEmail}</strong> ou appeler le
+          <strong className="text-white"> {siteConfig.contactDetails.phone}</strong>.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">2. Directeur de la publication</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          La direction de la publication est assurée par <strong className="text-white">{companyName}</strong>.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">3. Hébergement</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Le site est hébergé par <strong className="text-white">{hostingProvider}</strong>. Les coordonnées complètes de
+          l’hébergeur sont à compléter ici.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">4. Propriété intellectuelle</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          L’ensemble des contenus présents sur ce site est protégé par le droit de la propriété intellectuelle.
+          Toute reproduction ou diffusion doit faire l’objet d’une autorisation préalable.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">5. Liens utiles</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Voir aussi la <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/politique-de-confidentialite">politique de confidentialité</Link>, la <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/politique-de-cookies">politique de cookies</Link> et les <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/cgu">CGU</Link>.
+        </p>
+      </section>
+    </LegalPage>
+  );
+}
+ «  politique de Confidentialité
+« import type { Metadata } from "next";
+import Link from "next/link";
+
+import { LegalPage } from "@/components/legal-page";
+import { createPageMetadata } from "@/lib/seo";
+import { companyName, dpoEmail } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata(
+  "Politique de confidentialité",
+  "Politique de confidentialité de 2DK IT, prête à compléter avec les informations de traitement.",
+  "/politique-de-confidentialite",
+);
+
+export default function PrivacyPolicyPage() {
+  return (
+    <LegalPage
+      eyebrow="Politique de confidentialité"
+      title="Politique de confidentialité"
+      description="Cette politique explique comment 2DK IT collecte, utilise et protège les données personnelles."
+      lastUpdated="21 juin 2026"
+    >
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">1. Responsable du traitement</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Le responsable du traitement est <strong className="text-white">{companyName}</strong>, contactable à
+          <strong className="text-white"> {dpoEmail}</strong>.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">2. Données collectées</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Nous pouvons collecter les données transmises via le formulaire de contact: nom, entreprise, email,
+          téléphone, besoin et message.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">3. Finalités et base légale</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Les données sont utilisées pour répondre aux demandes, préparer des échanges commerciaux et assurer
+          le suivi des échanges. La base légale est l’intérêt légitime ou l’exécution de mesures précontractuelles,
+          selon le contexte.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">4. Durée de conservation</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Les données sont conservées pendant une durée à définir selon la finalité, puis supprimées ou archivées
+          conformément aux obligations applicables.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">5. Vos droits</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Vous disposez des droits d’accès, de rectification, d’effacement, d’opposition, de limitation et de
+          portabilité lorsque cela s’applique. Pour exercer vos droits, écrivez à
+          <strong className="text-white"> {dpoEmail}</strong>.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">6. Liens utiles</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Consultez aussi les <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/mentions-legales">mentions légales</Link>, la <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/politique-de-cookies">politique de cookies</Link> et les <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/cgu">CGU</Link>.
+        </p>
+      </section>
+    </LegalPage>
+  );
+}
+« 
+Politique de cookies :
+« import type { Metadata } from "next";
+import Link from "next/link";
+
+import { LegalPage } from "@/components/legal-page";
+import { createPageMetadata } from "@/lib/seo";
+import { companyName } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata(
+  "Politique de cookies",
+  "Politique de cookies de 2DK IT, claire et prête à compléter selon les outils utilisés.",
+  "/politique-de-cookies",
+);
+
+export default function CookiesPolicyPage() {
+  return (
+    <LegalPage
+      eyebrow="Politique de cookies"
+      title="Politique de cookies"
+      description="Cette politique détaille les cookies susceptibles d’être déposés et leur gestion."
+      lastUpdated="21 juin 2026"
+    >
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">1. Qu’est-ce qu’un cookie ?</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Un cookie est un petit fichier enregistré sur votre appareil lors de la consultation du site édité par
+          <strong className="text-white"> {companyName}</strong>. Il peut
+          servir au fonctionnement du site, aux mesures d’audience ou à l’amélioration de l’expérience utilisateur.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">2. Cookies utilisés</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Les catégories de cookies utilisées sur ce site sont à compléter selon les outils réellement déployés:
+          cookies strictement nécessaires, cookies de mesure d’audience, cookies de préférences et éventuels cookies
+          tiers.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">3. Gestion du consentement</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Si des cookies non essentiels sont utilisés, un bandeau de consentement devra permettre d’accepter,
+          de refuser ou de paramétrer les choix.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">4. Durée de conservation</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          La durée de conservation de chaque cookie doit être précisée ici selon l’outil concerné et la politique
+          de paramétrage retenue.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">5. Pages associées</h2>
+        <p className="text-sm leading-7 text-slate-300">
+          Consultez aussi les <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/mentions-legales">mentions légales</Link>, la <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/politique-de-confidentialite">politique de confidentialité</Link> et les <Link className="text-blue-300 underline decoration-white/20 underline-offset-4" href="/cgu">CGU</Link>.
+        </p>
+      </section>
+    </LegalPage>
+  );
+}
+« 
+Portofolio :  «  import type { Metadata } from "next";
+
+import { PageShell } from "@/components/page-shell";
+import { Badge, Tag } from "@/components/ui/badge";
+import { Callout } from "@/components/ui/callout";
+import { Card, CardBody } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { ButtonLink } from "@/components/ui/button";
+import { portfolioProjects } from "@/lib/portfolio";
+import { StructuredData } from "@/components/structured-data";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Portfolio",
+  "Découvrez des exemples de projets qui montrent la qualité de production et la finesse d’exécution de 2DK IT.",
+  "/portfolio",
+);
+
+const portfolioStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Portfolio 2DK IT",
+  url: "https://www.2dk-it.fr/portfolio",
+  description:
+    "Découvrez des exemples de projets qui montrent la qualité de production et la finesse d’exécution de 2DK IT.",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: portfolioProjects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: project.name,
+      item: {
+        "@type": "CreativeWork",
+        name: project.name,
+        additionalType: project.type,
+        description: project.context,
+        url: project.href ? `https://www.2dk-it.fr${project.href}` : "https://www.2dk-it.fr/portfolio",
+      },
+    })),
+  },
+  inLanguage: "fr-FR",
+};
+
+export default function PortfolioPage() {
+  return (
+    <PageShell
+      eyebrow="Portfolio"
+      title="Des projets sobres, lisibles et pensés pour rassurer rapidement"
+      description="Chaque projet montre le niveau de finition, la logique de production et la capacité à faire évoluer une base propre."
+    >
+      <StructuredData data={portfolioStructuredData} />
+
+      <div className="flex flex-col gap-14 lg:gap-18">
+        <section className="space-y-5">
+          <div className="flex flex-wrap items-center gap-3">
+            <Badge tone="accent">Réalisations</Badge>
+            <Tag>Cas client</Tag>
+            <Tag>Mockups</Tag>
+            <Tag>Support IT</Tag>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+            <div className="space-y-4">
+              <p className="ds-eyebrow">Intro</p>
+              <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Un portfolio pensé pour montrer le niveau de finition, pas pour faire du bruit.
+              </h2>
+              <p className="text-base leading-7 text-slate-300">
+                Les projets sont présentés avec un langage clair: contexte, problème, solution et bénéfice.
+                L’objectif est de rendre la qualité visible immédiatement.
+              </p>
+            </div>
+
+            <Callout tone="neutral" className="space-y-3">
+              <p className="ds-kicker">Architecture de contenu</p>
+              <p className="text-sm leading-6 text-slate-100">
+                La source de données est centralisée dans un tableau TypeScript pour ajouter facilement de nouveaux projets.
+              </p>
+            </Callout>
+          </div>
+        </section>
+
+        <Separator />
+
+        <section className="space-y-6">
+          <div className="space-y-3 max-w-2xl">
+            <p className="ds-eyebrow">Grille de projets</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Des cartes élégantes, avec l’essentiel de l’information.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Chaque projet suit la même structure pour faciliter la lecture et la comparaison.
+            </p>
+          </div>
+
+          <div className="grid gap-5 xl:grid-cols-3">
+            {portfolioProjects.map((project) => (
+              <Card key={project.name} className="overflow-hidden p-0">
+                <div className={`h-48 bg-linear-to-br ${project.imageAccent} p-5 sm:h-52 sm:p-6`}>
+                  <div className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/20 p-4 backdrop-blur-sm">
+                    <div className="flex items-start justify-between gap-3">
+                      <Tag>{project.type}</Tag>
+                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-300">
+                        {project.imageLabel}
+                      </span>
+                    </div>
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      <div className="h-16 rounded-2xl border border-white/10 bg-white/4" />
+                      <div className="h-16 rounded-2xl border border-white/10 bg-white/6" />
+                      <div className="h-16 rounded-2xl border border-white/10 bg-white/4" />
+                    </div>
+                  </div>
+                </div>
+
+                <CardBody className="space-y-5 p-6 sm:p-7">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="text-2xl font-semibold tracking-tight text-white">{project.name}</h3>
+                      <Badge tone="subtle">{project.type}</Badge>
+                    </div>
+                    <p className="text-sm leading-6 text-slate-300">{project.context}</p>
+                  </div>
+
+                  <div className="space-y-3 text-sm leading-6 text-slate-300">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Problème</p>
+                      <p className="mt-2">{project.problem}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Solution</p>
+                      <p className="mt-2">{project.solution}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Résultat</p>
+                      <p className="mt-2">{project.result}</p>
+                    </div>
+                  </div>
+
+                  {project.href ? (
+                    <ButtonLink href={project.href} variant="secondary" className="w-full">
+                      Voir le projet
+                    </ButtonLink>
+                  ) : null}
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="space-y-4">
+            <p className="ds-eyebrow">Pourquoi ce format</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Une structure simple à enrichir sans casser la cohérence.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Le tableau TypeScript permet d’ajouter un projet, un mockup ou une capture plus tard sans refondre la page.
+            </p>
+          </div>
+
+          <Callout tone="accent" className="space-y-3">
+            <p className="ds-kicker">Ajout futur</p>
+            <p className="text-sm leading-6 text-slate-100">
+              Vous pourrez migrer cette source vers un CMS headless sans changer la logique d’affichage.
+            </p>
+          </Callout>
+        </section>
+
+        <section>
+          <Callout tone="accent" className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div className="space-y-3">
+              <p className="ds-kicker">Contact</p>
+              <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Vous avez un projet à présenter ? On peut en parler.
+              </h2>
+              <p className="text-sm leading-6 text-slate-100">
+                Une présentation claire du contexte et du besoin suffit pour démarrer.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+              <ButtonLink href="/contact" variant="primary">
+                Demander un devis
+              </ButtonLink>
+              <ButtonLink href="/services" variant="ghost">
+                Voir les services
+              </ButtonLink>
+            </div>
+          </Callout>
+        </section>
+      </div>
+    </PageShell>
+  );
+}
+ « 
+
+Services :  
+« import type { Metadata } from "next";
+
+import { PageShell } from "@/components/page-shell";
+import { Badge, Tag } from "@/components/ui/badge";
+import { Callout } from "@/components/ui/callout";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { ButtonLink } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { StructuredData } from "@/components/structured-data";
+import { servicesContent } from "@/lib/services";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Services",
+  "Découvrez les offres web et support IT de 2DK IT, présentées de façon claire et comparable.",
+  "/services",
+);
+
+const { webOffers, supportItems, chooseSteps } = servicesContent;
+
+const servicesStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Services 2DK IT",
+  url: "https://www.2dk-it.fr/services",
+  description:
+    "Découvrez les offres web et support IT de 2DK IT, présentées de façon claire et comparable.",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: webOffers.map((offer, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: offer.name,
+      item: {
+        "@type": "Service",
+        name: offer.name,
+        description: offer.summary,
+        provider: {
+          "@type": "Organization",
+          name: "2DK IT",
+          url: "https://www.2dk-it.fr/",
+        },
+      },
+    })),
+  },
+  inLanguage: "fr-FR",
+};
+
+export default function ServicesPage() {
+  return (
+    <PageShell
+      eyebrow="Services"
+      title="Des offres web et IT lisibles, comparables et pensées pour décider vite"
+      description="2DK IT présente ses formules avec une logique simple: comprendre, comparer et choisir sans friction."
+    >
+      <StructuredData data={servicesStructuredData} />
+
+      <div className="flex flex-col gap-14 lg:gap-18">
+        <section className="space-y-5">
+          <div className="flex flex-wrap items-center gap-3">
+            <Badge tone="accent">Offres</Badge>
+            <Tag>Web</Tag>
+            <Tag>Support IT</Tag>
+            <Tag>Décision rapide</Tag>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+            <div className="space-y-4">
+              <p className="ds-eyebrow">Intro</p>
+              <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Trois offres web. Une même exigence de clarté et de qualité.
+              </h2>
+              <p className="text-base leading-7 text-slate-300">
+                Les formules sont structurées pour faire ressortir les différences sans créer de confusion.
+                L’objectif est simple: choisir la bonne option plus vite.
+              </p>
+            </div>
+
+            <Callout tone="neutral" className="space-y-3">
+              <p className="ds-kicker">Lecture rapide</p>
+              <p className="text-sm leading-6 text-slate-100">
+                La grille compare le niveau de personnalisation, les livrables et la valeur ajoutée de chaque offre.
+              </p>
+            </Callout>
+          </div>
+        </section>
+
+        <Separator />
+
+        <section className="space-y-6">
+          <div className="space-y-3 max-w-2xl">
+            <p className="ds-eyebrow">Comparatif des offres web</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Comparez les formules en un coup d’œil.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Chaque offre est construite pour répondre à un niveau d’ambition différent.
+            </p>
+          </div>
+
+          <div className="grid gap-5 xl:grid-cols-3">
+            {webOffers.map((offer) => (
+              <Card key={offer.name} className={offer.tone === "accent" ? "border-primary/35 bg-surface-strong/90" : ""}>
+                <CardHeader className="space-y-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <Tag>{offer.name}</Tag>
+                    {offer.tone === "accent" ? <Badge tone="accent">Recommandée</Badge> : null}
+                  </div>
+                  <h3 className="text-2xl font-semibold tracking-tight text-white">{offer.name}</h3>
+                  <p className="text-sm leading-6 text-slate-400">{offer.summary}</p>
+                </CardHeader>
+
+                <CardBody className="space-y-5">
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Pour qui</p>
+                    <p className="text-sm leading-6 text-slate-300">{offer.who}</p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Objectifs</p>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      {offer.goals.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <span className="mt-1 h-2 w-2 rounded-full bg-blue-400" />
+                          <span className="leading-6">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Livrables</p>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      {offer.deliverables.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <span className="mt-1 h-2 w-2 rounded-full bg-slate-500" />
+                          <span className="leading-6">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Bénéfices</p>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      {offer.benefits.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <span className="mt-1 h-2 w-2 rounded-full bg-blue-300" />
+                          <span className="leading-6">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Callout tone={offer.tone === "accent" ? "accent" : "default"} className="p-4 sm:p-4">
+                    <p className="text-sm leading-6 text-slate-100">
+                      <span className="font-semibold text-white">Personnalisation :</span> {offer.personalization}
+                    </p>
+                  </Callout>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-3 max-w-2xl">
+            <p className="ds-eyebrow">Support IT</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Un appui simple pour sécuriser et faire évoluer.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Le support IT complète les offres web quand il faut stabiliser, maintenir ou cadrer une évolution.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {supportItems.map((item) => (
+              <Card key={item.title}>
+                <CardHeader>
+                  <Tag>{item.title}</Tag>
+                  <h3 className="ds-subheading text-xl">{item.title}</h3>
+                </CardHeader>
+                <CardBody>
+                  <p className="text-sm leading-6 text-slate-400">{item.description}</p>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="space-y-4">
+            <p className="ds-eyebrow">Comment choisir votre formule</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Le bon choix dépend du niveau d’exigence et de la place du site dans votre acquisition.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Plus l’enjeu est stratégique, plus la structure doit être riche et personnalisée.
+            </p>
+          </div>
+
+          <div className="grid gap-4">
+            {chooseSteps.map((step) => (
+              <Callout key={step.title} className="space-y-2">
+                <p className="ds-kicker">Choix</p>
+                <h3 className="text-lg font-semibold text-white">{step.title}</h3>
+                <p className="text-sm leading-6 text-slate-300">{step.description}</p>
+              </Callout>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <Callout tone="accent" className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div className="space-y-3">
+              <p className="ds-kicker">Prêt à avancer</p>
+              <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Parlez-nous de votre besoin. On vous aide à choisir la bonne formule.
+              </h2>
+              <p className="text-sm leading-6 text-slate-100">
+                Une demande claire, une réponse rapide, un cadre simple.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+              <ButtonLink href="/contact" variant="primary">
+                Demander un devis
+              </ButtonLink>
+              <ButtonLink href="/portfolio" variant="ghost">
+                Voir le portfolio
+              </ButtonLink>
+            </div>
+          </Callout>
+        </section>
+      </div>
+    </PageShell>
+  );
+}
+« 
+Layout.tsx :  «  import type { ReactNode } from "react";
+import { cookies } from "next/headers";
+
+import {
+  CookieConsentBanner,
+  CookieConsentProvider,
+} from "@/components/cookie-consent-banner";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import {
+  COOKIE_CONSENT_COOKIE_NAME,
+  parseCookieConsent,
+} from "@/lib/cookie-consent";
+
+export default async function SiteLayout({
+  children,
+}: Readonly<{
+  children: ReactNode;
+}>) {
+  const cookieStore = await cookies();
+  const initialConsent = parseCookieConsent(cookieStore.get(COOKIE_CONSENT_COOKIE_NAME)?.value ?? null);
+
+  return (
+    <CookieConsentProvider initialConsent={initialConsent}>
+      <div className="relative flex min-h-screen flex-col overflow-hidden">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-60 focus:rounded-full focus:border focus:border-primary/40 focus:bg-slate-950 focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+        >
+          Aller au contenu principal
+        </a>
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-128 bg-[radial-gradient(circle_at_top,rgba(10,132,255,0.12),transparent_55%)]"
+        />
+
+        <SiteHeader />
+
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+
+        <SiteFooter />
+        <CookieConsentBanner />
+      </div>
+    </CookieConsentProvider>
+  );
+}
+«  
+import type { Metadata } from "next";
+
+import { PageShell } from "@/components/page-shell";
+import { Badge, Tag } from "@/components/ui/badge";
+import { ButtonLink } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { StructuredData } from "@/components/structured-data";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Sites web et services IT pour entreprises B2B",
+  "2DK IT conçoit des sites web et accompagne les équipes sur des besoins IT avec une approche claire, réactive et B2B.",
+  "/",
+);
+
+const servicesSnapshot = [
+  {
+    title: "Sites vitrines",
+    description:
+      "Des sites sobres, crédibles et orientés conversion pour présenter l’offre et générer des demandes qualifiées.",
+  },
+  {
+    title: "Support IT",
+    description:
+      "Un accompagnement fiable pour stabiliser, maintenir ou faire évoluer un environnement web ou technique.",
+  },
+  {
+    title: "Évolution produit",
+    description:
+      "Des ajustements structurés pour faire monter un site ou une plateforme en qualité, en vitesse et en clarté.",
+    },
+  {
+    title: "Cadrage technique",
+    description:
+      "Une lecture simple des besoins pour aller vite, éviter les ambiguïtés et poser un plan d’action concret.",
+  },
+];
+
+const trustSignals = [
+  "Réponse claire et rapide",
+  "Intervention structurée",
+  "Dialogue direct avec un interlocuteur humain",
+  "Niveau de finition élevé",
+];
+
+const why2DkIt = [
+  "Expertise web et IT",
+  "Réactivité dans les échanges",
+  "Clarté sur le périmètre",
+  "Accompagnement humain",
+  "Qualité perçue à chaque étape",
+];
+
+const webOffers = [
+  {
+    name: "Essentiel",
+    tone: "subtle" as const,
+    points: ["Base solide", "Présentation claire", "CTA visibles"],
+  },
+  {
+    name: "Performance",
+    tone: "accent" as const,
+    points: ["Structure plus riche", "Réassurance renforcée", "Parcours de conversion"],
+  },
+  {
+    name: "Signature",
+    tone: "subtle" as const,
+    points: ["Finition premium", "Image de marque forte", "Version la plus complète"],
+  },
+];
+
+const portfolioItems = [
+  "Site vitrine corporate",
+  "Refonte de présence web",
+  "Support et évolution IT",
+];
+
+const homeStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Sites web et services IT pour entreprises B2B",
+  url: "https://www.2dk-it.fr/",
+  description:
+    "2DK IT aide à présenter une offre avec sérieux, à rassurer vite et à transformer l’intérêt en prise de contact.",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "2DK IT",
+    url: "https://www.2dk-it.fr/",
+  },
+  about: {
+    "@type": "Organization",
+    name: "2DK IT",
+    url: "https://www.2dk-it.fr/",
+  },
+  inLanguage: "fr-FR",
+};
+
+export default function HomePage() {
+  return (
+    <PageShell
+      eyebrow="Accueil"
+      title="Sites web et services IT pour entreprises B2B"
+      description="2DK IT aide à présenter une offre avec sérieux, à rassurer vite et à transformer l’intérêt en prise de contact."
+    >
+      <StructuredData data={homeStructuredData} />
+
+      <div className="flex flex-col gap-14 lg:gap-18">
+        <section className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-wrap items-center gap-3">
+              <Badge tone="accent">B2B</Badge>
+              <Tag>Web</Tag>
+              <Tag>IT</Tag>
+              <Tag>Support</Tag>
+            </div>
+
+            <div className="space-y-5">
+              <h2 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Une présence web claire. Un support IT fiable. Une image qui inspire confiance.
+              </h2>
+              <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+                2DK IT conçoit des sites et accompagne les équipes techniques avec une approche simple,
+                sérieuse et orientée résultats.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href="/contact" variant="primary">
+                Demander un devis
+              </ButtonLink>
+              <ButtonLink href="/services" variant="secondary">
+                Découvrir les services
+              </ButtonLink>
+            </div>
+
+            <Callout tone="accent" className="max-w-2xl">
+              <div className="grid gap-3 sm:grid-cols-2">
+                {trustSignals.map((signal) => (
+                  <div key={signal} className="flex items-start gap-3">
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-blue-300" />
+                    <p className="text-sm leading-6 text-slate-100">{signal}</p>
+                  </div>
+                ))}
+              </div>
+            </Callout>
+          </div>
+
+          <div className="relative">
+            <div className="absolute inset-0 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_top,_rgba(10,132,255,0.16),_transparent_52%)] blur-xl" />
+            <Card className="overflow-hidden p-0">
+              <div className="border-b border-white/10 bg-white/[0.03] px-6 py-5 sm:px-7">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+                      Vue d’ensemble
+                    </p>
+                    <p className="mt-2 text-lg font-semibold text-white">
+                      Une composition sobre et tech
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-blue-400" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-slate-500" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-slate-700" />
+                  </div>
+                </div>
+              </div>
+
+              <CardBody className="space-y-5 p-6 sm:p-7">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Web</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-200">
+                      Présence claire, structure propre, conversion lisible.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-500">IT</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-200">
+                      Support, évolution, cadrage et accompagnement.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-sm text-slate-400">
+                    <span>Clarté du besoin</span>
+                    <span>Rapide</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-white/5">
+                    <div className="h-2 w-[86%] rounded-full bg-gradient-to-r from-blue-500 to-blue-300" />
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Lecture</p>
+                    <p className="mt-2 text-sm text-white">Compris en quelques secondes</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Ton</p>
+                    <p className="mt-2 text-sm text-white">Sobre et crédible</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-500">CTA</p>
+                    <p className="mt-2 text-sm text-white">Visible immédiatement</p>
+                  </div>
+                </div>
+              </CardBody>
+            </Card>
+          </div>
+        </section>
+
+        <Separator />
+
+        <section className="space-y-6">
+          <div className="space-y-3 max-w-2xl">
+            <p className="ds-eyebrow">Ce que nous faisons</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Des services simples à comprendre, utiles à vendre.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              L’essentiel du web et du support IT, présenté sans surcharge et avec un bénéfice clair.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {servicesSnapshot.map((item) => (
+              <Card key={item.title}>
+                <CardHeader>
+                  <Tag>{item.title}</Tag>
+                  <h3 className="ds-subheading text-xl">{item.title}</h3>
+                </CardHeader>
+                <CardBody>
+                  <p className="text-sm leading-6 text-slate-400">{item.description}</p>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+          <div className="space-y-4">
+            <p className="ds-eyebrow">Pourquoi 2DK IT</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Une posture rassurante, sans surpromesse.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Le site doit renvoyer une impression de maîtrise, de sérieux et de proximité.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {why2DkIt.map((item, index) => (
+              <Callout key={item} tone={index === 0 ? "accent" : "default"}>
+                <p className="text-sm leading-6 text-slate-100">{item}</p>
+              </Callout>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-3 max-w-2xl">
+            <p className="ds-eyebrow">Offres principales</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Trois niveaux pour faire monter la valeur progressivement.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Une structure simple pour guider la lecture et aider le prospect à se situer rapidement.
+            </p>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-3">
+            {webOffers.map((offer) => (
+              <Card key={offer.name} className={offer.tone === "accent" ? "border-primary/35" : ""}>
+                <CardHeader>
+                  <Tag>{offer.name}</Tag>
+                  <h3 className="ds-subheading text-xl">{offer.name}</h3>
+                </CardHeader>
+                <CardBody>
+                  <ul className="space-y-3 text-sm text-slate-300">
+                    {offer.points.map((point) => (
+                      <li key={point} className="flex items-start gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-blue-400" />
+                        <span className="leading-6">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-3 max-w-2xl">
+            <p className="ds-eyebrow">Portfolio</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Quelques repères concrets, sans surcharger.
+            </h2>
+            <p className="text-base leading-7 text-slate-300">
+              Le portfolio sert à montrer le niveau de finition et la variété des contextes traités.
+            </p>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+            <Card>
+              <CardHeader>
+                <Tag>Réalisations</Tag>
+                <h3 className="ds-subheading text-xl">Exemples de projets</h3>
+              </CardHeader>
+              <CardBody>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {portfolioItems.map((item) => (
+                    <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <p className="text-xs uppercase tracking-[0.22em] text-slate-500">Projet</p>
+                      <p className="mt-2 text-sm leading-6 text-slate-200">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardBody>
+            </Card>
+
+            <Callout tone="neutral" className="flex flex-col justify-between gap-6">
+              <div className="space-y-3">
+                <p className="ds-kicker">Voir plus</p>
+                <p className="text-base leading-7 text-slate-100">
+                  Les cas détaillés, les visuels et les résultats seront regroupés dans la page portfolio.
+                </p>
+              </div>
+              <ButtonLink href="/portfolio" variant="secondary">
+                Découvrir le portfolio
+              </ButtonLink>
+            </Callout>
+          </div>
+        </section>
+
+        <section>
+          <Callout tone="accent" className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div className="space-y-3">
+              <p className="ds-kicker">Contact</p>
+              <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Un besoin web ou IT à cadrer ? Parlons-en simplement.
+              </h2>
+              <p className="text-sm leading-6 text-slate-100 sm:text-base">
+                2DK IT répond vite, clarifie le besoin et propose un cadre de travail lisible.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+              <ButtonLink href="/contact" variant="primary">
+                Demander un devis
+              </ButtonLink>
+              <ButtonLink href="/services" variant="ghost">
+                Découvrir les services
+              </ButtonLink>
+            </div>
+          </Callout>
+        </section>
+      </div>
+    </PageShell>
+  );
+}
+
+Route.ts :  «  import { NextResponse } from "next/server";
+
+import { normalizeContactValues, validateContactForm, type ContactFormValues } from "@/lib/contact";
+import {
+  getContactMailerConfigurationMessage,
+  isContactMailerConfigured,
+  sendContactEmails,
+} from "@/lib/contact-mailer";
+
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+
+type RateLimitState = {
+  count: number;
+  resetAt: number;
+};
+
+type ContactRateLimitStore = Map<string, RateLimitState>;
+
+type GlobalWithContactRateLimitStore = typeof globalThis & {
+  __contactRateLimitStore?: ContactRateLimitStore;
+};
+
+// Limite simple: 5 requêtes par IP sur une fenêtre glissante de 10 minutes.
+// Stockage en mémoire best-effort pour Vercel/serverless: partagé uniquement sur une instance chaude.
+const globalWithContactRateLimitStore = globalThis as GlobalWithContactRateLimitStore;
+const rateLimitStore = globalWithContactRateLimitStore.__contactRateLimitStore ??= new Map<
+  string,
+  RateLimitState
+>();
+
+type ContactPayload = ContactFormValues & {
+  source?: string;
+};
+
+function getClientIp(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const realIp = request.headers.get("x-real-ip");
+  const cfConnectingIp = request.headers.get("cf-connecting-ip");
+
+  const candidate = forwardedFor?.split(",")[0]?.trim() || realIp?.trim() || cfConnectingIp?.trim();
+
+  return candidate || "unknown";
+}
+
+function applyContactRateLimit(clientIp: string) {
+  const now = Date.now();
+  for (const [ip, state] of rateLimitStore.entries()) {
+    if (state.resetAt <= now) {
+      rateLimitStore.delete(ip);
+    }
+  }
+  const currentEntry = rateLimitStore.get(clientIp);
+
+  if (!currentEntry || currentEntry.resetAt <= now) {
+    rateLimitStore.set(clientIp, {
+      count: 1,
+      resetAt: now + RATE_LIMIT_WINDOW_MS,
+    });
+
+    return {
+      limited: false,
+      remaining: RATE_LIMIT_MAX_REQUESTS - 1,
+      resetAt: now + RATE_LIMIT_WINDOW_MS,
+    };
+  }
+
+  if (currentEntry.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return {
+      limited: true,
+      remaining: 0,
+      resetAt: currentEntry.resetAt,
+    };
+  }
+
+  const nextEntry = {
+    count: currentEntry.count + 1,
+    resetAt: currentEntry.resetAt,
+  };
+
+  rateLimitStore.set(clientIp, nextEntry);
+
+  return {
+    limited: false,
+    remaining: RATE_LIMIT_MAX_REQUESTS - nextEntry.count,
+    resetAt: nextEntry.resetAt,
+  };
+}
+
+function getRateLimitResponse(rateLimit: ReturnType<typeof applyContactRateLimit>) {
+  if (!rateLimit.limited) {
+    return null;
+  }
+
+  const retryAfterSeconds = Math.max(1, Math.ceil((rateLimit.resetAt - Date.now()) / 1000));
+
+  return NextResponse.json(
+    {
+      ok: false,
+      message: "Trop de requêtes sur le formulaire de contact. Réessayez dans quelques minutes.",
+    },
+    {
+      status: 429,
+      headers: {
+        "Retry-After": String(retryAfterSeconds),
+      },
+    },
+  );
+}
+
+export async function POST(request: Request) {
+  if (!isContactMailerConfigured()) {
+    return NextResponse.json(
+      {
+        ok: false,
+        message: getContactMailerConfigurationMessage(),
+      },
+      { status: 503 },
+    );
+  }
+
+  const clientIp = getClientIp(request);
+  const rateLimit = applyContactRateLimit(clientIp);
+
+  const rateLimitResponse = getRateLimitResponse(rateLimit);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
+  }
+
+  let payload: ContactPayload;
+
+  try {
+    payload = (await request.json()) as ContactPayload;
+  } catch {
+    return NextResponse.json(
+      { ok: false, message: "Requête invalide." },
+      { status: 400 },
+    );
+  }
+
+  const normalizedPayload = normalizeContactValues(payload);
+  const errors = validateContactForm(normalizedPayload);
+  if (Object.keys(errors).length > 0) {
+    return NextResponse.json(
+      { ok: false, message: errors.form ?? "Merci de corriger les champs indiqués.", errors },
+      { status: 400 },
+    );
+  }
+
+  try {
+    const result = await sendContactEmails(normalizedPayload);
+
+    return NextResponse.json({
+      ok: true,
+      message: result.confirmationSent
+        ? "Votre demande a bien été envoyée. Un accusé de réception vous a également été transmis."
+        : "Votre demande a bien été envoyée. Nous revenons vers vous rapidement.",
+      confirmationSent: result.confirmationSent,
+      rateLimitRemaining: rateLimit.remaining,
+    });
+  } catch {
+    return NextResponse.json(
+      {
+        ok: false,
+        message:
+          "L’envoi email n’est pas disponible pour le moment. Vérifiez la configuration SMTP ou réessayez plus tard.",
+      },
+      { status: 503 },
+    );
+  }
+}
+
+« 
+
+Globals.css
+«  @import "tailwindcss";
+
+:root {
+  --background: #04060a;
+  --foreground: #f4f7fb;
+  --muted: #9aa4b2;
+  --surface: #0b1020;
+  --surface-strong: #12192b;
+  --surface-muted: rgba(255, 255, 255, 0.03);
+  --border: rgba(148, 163, 184, 0.16);
+  --border-strong: rgba(148, 163, 184, 0.26);
+  --primary: #0A84FF;
+  --primary-strong: #006fe0;
+  --primary-soft: rgba(10, 132, 255, 0.14);
+  --accent: #6aa8ff;
+  --accent-soft: rgba(106, 168, 255, 0.12);
+  --success: #1fc28f;
+  --warning: #f0b84a;
+  --danger: #f16060;
+  --ring: rgba(10, 132, 255, 0.65);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(10, 132, 255, 0.12), transparent 34%),
+    radial-gradient(circle at top right, rgba(106, 168, 255, 0.08), transparent 26%),
+    linear-gradient(180deg, #03050a 0%, #050912 48%, #030408 100%);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+* {
+  border-color: var(--border);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--foreground);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+p {
+  color: var(--muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(10, 132, 255, 0.32);
+  color: var(--foreground);
+}
+
+@layer components {
+  .ds-container {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+  }
+
+  .ds-section {
+    padding-block: clamp(4rem, 7vw, 7rem);
+  }
+
+  .ds-stack > * + * {
+    margin-top: 1rem;
+  }
+
+  .ds-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.45rem 0.9rem;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .ds-heading {
+    font-size: clamp(2.35rem, 4.8vw, 4.5rem);
+    line-height: 0.96;
+  }
+
+  .ds-subheading {
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    line-height: 1.25;
+    color: var(--foreground);
+  }
+
+  .ds-lead {
+    max-width: 42rem;
+    font-size: 1.03rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .ds-card {
+    border: 1px solid var(--border);
+    border-radius: 1.75rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(12px);
+  }
+
+  .ds-card-strong {
+    border: 1px solid var(--border-strong);
+    border-radius: 1.75rem;
+    background: linear-gradient(180deg, rgba(18, 25, 43, 0.96), rgba(10, 15, 28, 0.96));
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
+  }
+
+  .ds-badge,
+  .ds-tag {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    background: var(--surface-muted);
+    color: #e8edf5;
+  }
+
+  .ds-badge {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .ds-tag {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .ds-separator {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+  }
+
+  .ds-callout {
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: 1.25rem 1.35rem;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .ds-callout-accent {
+    border-color: rgba(10, 132, 255, 0.3);
+    background: linear-gradient(180deg, rgba(10, 132, 255, 0.14), rgba(10, 132, 255, 0.06));
+  }
+
+  .ds-callout-neutral {
+    border-color: var(--border-strong);
+    background: linear-gradient(180deg, rgba(18, 25, 43, 0.96), rgba(10, 15, 28, 0.96));
+  }
+
+  .ds-btn,
+  .ds-btn-primary,
+  .ds-btn-secondary,
+  .ds-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .ds-btn-primary {
+    border: 1px solid rgba(10, 132, 255, 0.4);
+    background: linear-gradient(180deg, var(--primary), var(--primary-strong));
+    color: white;
+    box-shadow: 0 16px 40px rgba(10, 132, 255, 0.2);
+  }
+
+  .ds-btn-primary:hover {
+    transform: translateY(-1px);
+    border-color: rgba(10, 132, 255, 0.55);
+    background: linear-gradient(180deg, #2f95ff, #0068d1);
+  }
+
+  .ds-btn-secondary {
+    border: 1px solid var(--border-strong);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--foreground);
+  }
+
+  .ds-btn-secondary:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .ds-btn-ghost {
+    border: 1px solid transparent;
+    background: transparent;
+    color: #e5eaf3;
+  }
+
+  .ds-btn-ghost:hover {
+    border-color: var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+  }
+
+  .ds-field,
+  .ds-input,
+  .ds-textarea,
+  .ds-select {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--surface-strong);
+    color: var(--foreground);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .ds-input,
+  .ds-select {
+    min-height: 3rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .ds-textarea {
+    min-height: 9rem;
+    padding: 1rem;
+    resize: vertical;
+  }
+
+  .ds-input::placeholder,
+  .ds-textarea::placeholder,
+  .ds-select:invalid {
+    color: #6f7784;
+  }
+
+  .ds-field:focus-within,
+  .ds-input:focus,
+  .ds-textarea:focus,
+  .ds-select:focus {
+    border-color: rgba(10, 132, 255, 0.55);
+    background: #141d31;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.16);
+  }
+
+  .ds-field-error {
+    color: #ff8d8d;
+  }
+
+  .ds-field-help {
+    color: var(--muted);
+  }
+
+  .ds-kicker {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .ds-hr {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.32), transparent);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+ « 
+
+Layout.tsx :  «  import type { Metadata } from "next";
+import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import "./globals.css";
+
+import { StructuredData } from "@/components/structured-data";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.2dk-it.fr";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "2DK IT",
+    template: "%s | 2DK IT",
+  },
+  description:
+    "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
+  applicationName: "2DK IT",
+  creator: "2DK IT",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: "2DK IT",
+    title: "2DK IT",
+    description:
+      "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
+    url: siteUrl,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "2DK IT - Sites web et services IT pour entreprises B2B",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "2DK IT",
+    description:
+      "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "2DK IT",
+      url: siteUrl,
+      logo: `${siteUrl}/opengraph-image`,
+      email: "contact@2dk-it.fr",
+      sameAs: [],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "2DK IT",
+      url: siteUrl,
+      description:
+        "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
+      inLanguage: "fr-FR",
+    },
+  ];
+
+  return (
+    <html
+      lang="fr"
+      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <StructuredData data={structuredData} />
+        {children}
+      </body>
+    </html>
+  );
+}
+
+«  
+Opengraph-image.tsx :  « import { ImageResponse } from "next/og";
+
+export const runtime = "edge";
+
+export const size = {
+  width: 1200,
+  height: 630,
+};
+
+
+export default function OpenGraphImage() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "72px",
+          background:
+            "radial-gradient(circle at top left, rgba(10,132,255,0.30), transparent 30%), linear-gradient(180deg, #04060a 0%, #070b15 100%)",
+          color: "#f4f7fb",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px", maxWidth: "720px" }}>
+          <div
+            style={{
+              display: "inline-flex",
+              width: "96px",
+              height: "96px",
+              borderRadius: "28px",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1px solid rgba(255,255,255,0.12)",
+              background: "rgba(255,255,255,0.06)",
+              fontSize: "34px",
+              fontWeight: 700,
+              letterSpacing: "0.28em",
+            }}
+          >
+            2DK
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            <div style={{ fontSize: "22px", letterSpacing: "0.22em", textTransform: "uppercase", color: "#9aa4b2" }}>
+              Site vitrine corporate
+            </div>
+            <div style={{ fontSize: "64px", lineHeight: 1, fontWeight: 700, letterSpacing: "-0.05em" }}>
+              Sites web et services IT pour entreprises B2B
+            </div>
+            <div style={{ fontSize: "28px", lineHeight: 1.35, color: "#dbe5f2", maxWidth: "640px" }}>
+              Une présence claire, un support fiable et une image crédible dès le premier regard.
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            width: "280px",
+            height: "280px",
+            borderRadius: "40px",
+            border: "1px solid rgba(255,255,255,0.10)",
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "28px",
+          }}
+        >
+          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+            <div style={{ width: "12px", height: "12px", borderRadius: "999px", background: "#0A84FF" }} />
+            <div style={{ width: "12px", height: "12px", borderRadius: "999px", background: "#64748b" }} />
+            <div style={{ width: "12px", height: "12px", borderRadius: "999px", background: "#1f2937" }} />
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ fontSize: "18px", color: "#9aa4b2", textTransform: "uppercase", letterSpacing: "0.22em" }}>2DK IT</div>
+            <div style={{ fontSize: "28px", lineHeight: 1.15, fontWeight: 700 }}>Web. IT. Conversion.</div>
+          </div>
+        </div>
+      </div>
+    ),
+    size,
+  );
+}
+
+«  
+Robots.ts
+«  import type { MetadataRoute } from "next";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.2dk-it.fr";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+    ],
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
+  };
+}
+
+«  
+Sitemap.ts :  «  import type { MetadataRoute } from "next";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.2dk-it.fr";
+
+const pages = [
+  "/",
+  "/a-propos",
+  "/services",
+  "/portfolio",
+  "/contact",
+  "/mentions-legales",
+  "/politique-de-confidentialite",
+  "/politique-de-cookies",
+  "/cgu",
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return pages.map((path) => ({
+    url: `${siteUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: path === "/" ? "weekly" : "monthly",
+    priority: path === "/" ? 1 : 0.7,
+  }));
+}
+
+"

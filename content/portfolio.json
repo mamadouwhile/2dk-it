@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Refonte de site corporate",
+    "type": "Site vitrine",
+    "context": "Entreprise B2B avec une présence web trop dense et peu lisible.",
+    "problem": "Le message principal n’était pas compris assez vite et la prise de contact restait faible.",
+    "solution": "Recentrage de l’arborescence, hiérarchie plus nette et amélioration du parcours vers le contact.",
+    "result": "Une lecture plus claire, une perception plus professionnelle et une navigation plus directe.",
+    "imageLabel": "Mockup site corporate",
+    "imageAccent": "from-blue-500/20 via-slate-900 to-slate-950",
+    "href": "/contact"
+  },
+  {
+    "name": "Support et évolution web",
+    "type": "Support IT",
+    "context": "Structure en production avec besoin d’accompagnement régulier et de corrections rapides.",
+    "problem": "Les demandes arrivaient sans cadre clair et les évolutions prenaient trop de temps à qualifier.",
+    "solution": "Mise en place d’un suivi simple, d’un périmètre plus net et d’un pilotage orienté fiabilité.",
+    "result": "Un support plus réactif et une meilleure stabilité dans le quotidien.",
+    "imageLabel": "Tableau de suivi technique",
+    "imageAccent": "from-slate-700/30 via-slate-900 to-slate-950",
+    "href": "/services"
+  },
+  {
+    "name": "Plateforme de présentation produit",
+    "type": "Site intermédiaire",
+    "context": "Offre complexe à expliquer avec besoin de rassurer plus efficacement.",
+    "problem": "Le site devait présenter davantage de preuves et mieux accompagner la décision.",
+    "solution": "Ajout de sections de réassurance, d’éléments de preuve et d’un parcours plus structuré.",
+    "result": "Un discours plus crédible, plus lisible et mieux armé pour convertir.",
+    "imageLabel": "Interface produit sobre",
+    "imageAccent": "from-blue-500/15 via-slate-900 to-slate-950",
+    "href": "/contact"
+  }
+]
+

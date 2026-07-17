@@ -1,0 +1,63 @@
+{
+  "webOffers": [
+    {
+      "name": "Site Vitrine",
+      "tone": "subtle",
+      "summary": "Pour présenter l’essentiel avec sobriété et crédibilité.",
+      "who": "Entreprises qui veulent une présence web claire, rapide à comprendre et simple à maintenir.",
+      "goals": ["Présenter l’offre", "Rassurer vite", "Générer des prises de contact"],
+      "deliverables": ["Arborescence simple", "Pages clés", "CTA visibles", "Base SEO"],
+      "benefits": ["Lecture immédiate", "Site léger", "Mise en ligne rapide"],
+      "personalization": "Niveau de personnalisation essentiel, centré sur la clarté et la conversion."
+    },
+    {
+      "name": "Site Intermédiaire",
+      "tone": "accent",
+      "summary": "Pour structurer un discours plus riche et mieux qualifier les demandes.",
+      "who": "Entreprises qui ont besoin de plus de contenu, de réassurance et d’un parcours plus guidé.",
+      "goals": ["Expliquer plus en détail", "Montrer des preuves", "Mieux convertir"],
+      "deliverables": ["Sections renforcées", "Blocs de réassurance", "Comparatifs", "Formulaire optimisé"],
+      "benefits": ["Message plus solide", "Conversion plus nette", "Image plus premium"],
+      "personalization": "Niveau de personnalisation intermédiaire avec plus d’adaptation au positionnement et au parcours de lecture."
+    },
+    {
+      "name": "Site Premium",
+      "tone": "subtle",
+      "summary": "Pour une présence plus forte, plus complète et plus différenciante.",
+      "who": "Entreprises qui veulent une image haut de gamme et un site pensé pour convaincre avec précision.",
+      "goals": ["Renforcer la marque", "Montrer le niveau d’expertise", "Soutenir la décision"],
+      "deliverables": ["Direction artistique poussée", "Parcours complet", "Réassurance avancée", "Composants sur mesure"],
+      "benefits": ["Impact plus fort", "Perception premium", "Expérience plus aboutie"],
+      "personalization": "Niveau de personnalisation élevé, avec une composition plus riche et un travail de finesse sur les détails."
+    }
+  ],
+  "supportItems": [
+    {
+      "title": "Support de proximité",
+      "description": "Pour garder un interlocuteur direct, des réponses rapides et une relation simple à piloter."
+    },
+    {
+      "title": "Maintenance et évolution",
+      "description": "Pour stabiliser un site, corriger, sécuriser et faire évoluer les besoins sans rupture."
+    },
+    {
+      "title": "Conseil IT",
+      "description": "Pour cadrer une décision, clarifier un choix technique ou structurer une petite feuille de route."
+    }
+  ],
+  "chooseSteps": [
+    {
+      "title": "Vous voulez aller vite",
+      "description": "Le Site Vitrine suffit si l’objectif est d’être crédible, lisible et contactable rapidement."
+    },
+    {
+      "title": "Vous devez convaincre davantage",
+      "description": "Le Site Intermédiaire est le bon choix si le site doit expliquer plus, rassurer plus et convertir mieux."
+    },
+    {
+      "title": "Vous cherchez une image forte",
+      "description": "Le Site Premium s’impose si la qualité perçue et la différenciation doivent être visibles dès l’arrivée."
+    }
+  ]
+}
+
