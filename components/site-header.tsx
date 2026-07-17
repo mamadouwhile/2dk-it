@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -28,9 +29,15 @@ export function SiteHeader() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-3 py-4">
           <Link href="/" className="group flex min-w-0 items-center gap-3 transition duration-200 ease-out hover:-translate-y-0.5" onClick={closeMobileMenu}>
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-sm font-semibold tracking-[0.3em] text-slate-950 shadow-[0_0_0_1px_rgba(var(--primary-rgb),0.12)] transition duration-200 group-hover:border-primary/30 group-hover:bg-primary/10 group-hover:text-primary">
-              2DK
-            </span>
+          <Image
+  src="/logo.jpg"
+  alt="Logo 2DK IT"
+  width={56}
+  height={56}
+  className="h-14 w-14 rounded-2xl object-contain"
+  priority
+/>
+    
             <span className="flex min-w-0 flex-col leading-tight">
               <span className="truncate text-sm font-semibold uppercase tracking-[0.28em] text-slate-950">
                 {siteConfig.name}

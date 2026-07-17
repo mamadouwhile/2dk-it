@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { PageShell } from "@/components/page-shell";
 import { Reveal } from "@/components/reveal";
@@ -84,38 +85,59 @@ export default function PortfolioPage() {
 
           <div className="grid gap-5 lg:grid-cols-[1.12fr_0.88fr]">
             <Card className="overflow-hidden p-0">
-              <div className={`bg-linear-to-br ${featuredProject.imageAccent} p-6 sm:p-7`}>
-                <div className="flex items-center justify-between gap-3">
-                  <div className="space-y-2">
-                    <Tag>{featuredProject.type}</Tag>
-                    <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                      {featuredProject.name}
-                    </h3>
-                  </div>
-                  <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/90">
-                    Projet phare
-                  </span>
-                </div>
+              <div className="relative h-96 overflow-hidden sm:h-[26rem] lg:h-[30rem]">
+                {featuredProject.imageSrc ? (
+                  <Image
+                    src={featuredProject.imageSrc}
+                    alt={`Capture d'écran du site ${featuredProject.name}`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(min-width: 1024px) 56vw, 100vw"
+                    priority
+                  />
+                ) : null}
 
-                <div className="mt-8 rounded-[1.75rem] border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
-                        Contexte
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.context}</p>
+                <div
+                  className={`absolute inset-0 ${
+                    featuredProject.imageSrc
+                      ? "bg-linear-to-b from-slate-950/10 via-slate-950/50 to-slate-950/95"
+                      : `bg-linear-to-br ${featuredProject.imageAccent}`
+                  }`}
+                />
+
+                <div className="relative flex h-full flex-col justify-end p-6 sm:p-7">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="space-y-2">
+                      <Tag>{featuredProject.type}</Tag>
+                      <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                        {featuredProject.name}
+                      </h3>
                     </div>
-                    <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
-                        Solution
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.solution}</p>
-                    </div>
-                    <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
-                        Résultat
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.result}</p>
+                    <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/90">
+                      Projet phare
+                    </span>
+                  </div>
+
+                  <div className="mt-8 rounded-[1.75rem] border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
+                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
+                          Contexte
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.context}</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
+                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
+                          Solution
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.solution}</p>
+                      </div>
+                      <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
+                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
+                          Résultat
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.result}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -192,52 +214,53 @@ export default function PortfolioPage() {
             {portfolioProjects.map((project, index) => (
               <Reveal key={project.name} delay={index * 90}>
                 <Card className="overflow-hidden p-0">
-                <div className={`h-48 bg-linear-to-br ${project.imageAccent} p-5 sm:h-52 sm:p-6`}>
-                  <div className="flex h-full flex-col justify-between rounded-3xl border border-white/60 bg-white/70 p-4 backdrop-blur-sm">
-                    <div className="flex items-start justify-between gap-3">
+                  <div className="relative h-48 w-full overflow-hidden sm:h-52">
+                    {project.imageSrc ? (
+                      <Image
+                        src={project.imageSrc}
+                        alt={`Capture d'écran du site ${project.name}`}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1280px) 33vw, 100vw"
+                      />
+                    ) : (
+                      <div className={`h-full w-full bg-linear-to-br ${project.imageAccent}`} />
+                    )}
+                    <div className="absolute left-4 top-4">
                       <Tag>{project.type}</Tag>
-                      <span className="rounded-full border border-border bg-white px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-600">
-                        {project.imageLabel}
-                      </span>
-                    </div>
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      <div className="h-16 rounded-2xl border border-border bg-white/80" />
-                      <div className="h-16 rounded-2xl border border-border bg-white" />
-                      <div className="h-16 rounded-2xl border border-border bg-white/80" />
-                    </div>
-                  </div>
-                </div>
-
-                <CardBody className="space-y-5 p-6 sm:p-7">
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{project.name}</h3>
-                      <Badge tone="subtle">{project.type}</Badge>
-                    </div>
-                    <p className="text-sm leading-6 text-slate-600">{project.context}</p>
-                  </div>
-
-                  <div className="space-y-3 text-sm leading-6 text-slate-600">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Problème</p>
-                      <p className="mt-2">{project.problem}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Solution</p>
-                      <p className="mt-2">{project.solution}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Résultat</p>
-                      <p className="mt-2">{project.result}</p>
                     </div>
                   </div>
 
-                  {project.href ? (
-                    <ButtonLink href={project.href} variant="secondary" className="w-full">
-                      Voir le projet
-                    </ButtonLink>
-                  ) : null}
-                </CardBody>
+                  <CardBody className="space-y-5 p-6 sm:p-7">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-3">
+                        <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{project.name}</h3>
+                        <Badge tone="subtle">{project.type}</Badge>
+                      </div>
+                      <p className="text-sm leading-6 text-slate-600">{project.context}</p>
+                    </div>
+
+                    <div className="space-y-3 text-sm leading-6 text-slate-600">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Problème</p>
+                        <p className="mt-2">{project.problem}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Solution</p>
+                        <p className="mt-2">{project.solution}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Résultat</p>
+                        <p className="mt-2">{project.result}</p>
+                      </div>
+                    </div>
+
+                    {project.href ? (
+                      <ButtonLink href={project.href} variant="secondary" className="w-full">
+                        Voir le projet
+                      </ButtonLink>
+                    ) : null}
+                  </CardBody>
                 </Card>
               </Reveal>
             ))}
