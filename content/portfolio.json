@@ -9,7 +9,18 @@
     "imageLabel": "Mockup site Westafine",
     "imageAccent": "from-amber-500/20 via-slate-900 to-slate-950",
     "imageSrc": "/Westafine.webp",
-    "imageSrcMobile": "/projects/westafine-mobile.png",
+    "gallery": [
+      "/westafine/west1.png",
+      "/westafine/west2.png",
+      "/westafine/west3.png",
+      "/westafine/west4.png",
+      "/westafine/west5.png",
+      "/westafine/west6.png",
+      "/westafine/west7.png",
+      "/westafine/west8.png",
+      "/westafine/west9.png",
+      "/westafine/west10.png"
+    ],
     "href": "https://www.westafinedrinks.com"
   },
   {
@@ -22,7 +33,7 @@
     "imageLabel": "Mockup plateforme Enerchoice",
     "imageAccent": "from-emerald-500/20 via-slate-900 to-slate-950",
     "imageSrc": "/Enerchoice.webp",
-    "imageSrcMobile": "/projects/enerchoice-mobile.png",
+    "gallery": ["/Enerchoice.webp"],
     "href": "/projets/enerchoice"
   },
   {
@@ -35,7 +46,7 @@
     "imageLabel": "Mockup site Re-Commencer",
     "imageAccent": "from-rose-500/15 via-slate-900 to-slate-950",
     "imageSrc": "/Recommencer.webp",
-    "imageSrcMobile": "/projects/re-commencer-mobile.png",
+    "gallery": ["/Recommencer.webp"],
     "href": "https://www.jerecommence.com"
   }
 ]

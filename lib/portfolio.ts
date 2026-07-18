@@ -15,6 +15,7 @@ export type PortfolioProject = {
   imageSrc?: string;
   imageSrcMobile?: string;
   imageSrcDetail?: string;
+  gallery?: string[];
 };
 
 function isPortfolioProject(value: unknown): value is PortfolioProject {
@@ -48,9 +49,20 @@ function isPortfolioProject(value: unknown): value is PortfolioProject {
     "imageSrcDetail",
   ];
 
-  return optionalStringKeys.every(
+  const optionalStringsValid = optionalStringKeys.every(
     (key) => value[key] === undefined || typeof value[key] === "string",
   );
+
+  if (!optionalStringsValid) {
+    return false;
+  }
+
+  const gallery = value.gallery;
+  const galleryValid =
+    gallery === undefined ||
+    (Array.isArray(gallery) && gallery.every((item) => typeof item === "string"));
+
+  return galleryValid;
 }
 
 function isPortfolioProjects(value: unknown): value is PortfolioProject[] {

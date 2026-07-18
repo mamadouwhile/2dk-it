@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { PageShell } from "@/components/page-shell";
+import { ProjectPreview } from "@/components/portfolio/project-preview";
 import { Reveal } from "@/components/reveal";
 import { Badge, Tag } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
@@ -151,9 +152,11 @@ export default function PortfolioPage() {
                       Un projet sélectionné pour donner immédiatement le ton du portfolio.
                     </p>
                   </div>
-                  <ButtonLink href={featuredProject.href ?? "/contact"} variant="secondary">
-                    Découvrir
-                  </ButtonLink>
+                  <ProjectPreview
+                    name={featuredProject.name}
+                    gallery={featuredProject.gallery ?? (featuredProject.imageSrc ? [featuredProject.imageSrc] : [])}
+                    href={featuredProject.href}
+                  />
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-3">
@@ -255,11 +258,11 @@ export default function PortfolioPage() {
                       </div>
                     </div>
 
-                    {project.href ? (
-                      <ButtonLink href={project.href} variant="secondary" className="w-full">
-                        Voir le projet
-                      </ButtonLink>
-                    ) : null}
+                    <ProjectPreview
+                      name={project.name}
+                      gallery={project.gallery ?? (project.imageSrc ? [project.imageSrc] : [])}
+                      href={project.href}
+                    />
                   </CardBody>
                 </Card>
               </Reveal>
