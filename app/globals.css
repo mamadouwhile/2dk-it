@@ -94,7 +94,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--foreground);
+  color: black;
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.08;

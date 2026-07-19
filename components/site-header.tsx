@@ -22,31 +22,45 @@ function isCurrentPath(pathname: string | null, href: string) {
 export function SiteHeader() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-white/88 backdrop-blur-xl supports-backdrop-filter:bg-white/80">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-3 py-4">
-          <Link href="/" className="group flex min-w-0 items-center gap-3 transition duration-200 ease-out hover:-translate-y-0.5" onClick={closeMobileMenu}>
-          <Image
-  src="/logo.jpg"
-  alt="Logo 2DK IT"
-  width={56}
-  height={56}
-  className="h-14 w-14 rounded-2xl object-contain"
-  priority
-/>
-    
-            <span className="flex min-w-0 flex-col leading-tight">
-              <span className="truncate text-sm font-semibold uppercase tracking-[0.28em] text-slate-950">
+    <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#020817]/90 backdrop-blur-xl. text-white">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="flex min-h-[78px] items-center justify-between gap-4">
+          {/* Logo */}
+          <Link
+            href="/"
+            onClick={closeMobileMenu}
+            className="group flex min-w-0 items-center gap-3"
+          >
+            <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_12px_35px_-18px_rgba(37,99,235,0.9)] transition duration-300 group-hover:-translate-y-0.5 group-hover:border-blue-500/40">
+              <Image
+                src="/logo.jpg"
+                alt="Logo 2DK IT"
+                width={48}
+                height={48}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div className="hidden min-w-0 sm:block">
+              <p className="truncate text-sm font-semibold uppercase tracking-[0.24em] text-white">
                 {siteConfig.name}
-              </span>
-              <span className="truncate text-xs text-slate-500">B2B development & IT services</span>
-            </span>
+              </p>
+
+              <p className="mt-1 truncate text-xs text-slate-500">
+                Web development & IT services
+              </p>
+            </div>
           </Link>
 
-          <nav className="hidden items-center gap-1 rounded-full border border-border bg-slate-50 p-1 lg:flex">
+          {/* Navigation desktop */}
+          <nav className="hidden items-center gap-1 lg:flex">
             {siteConfig.navigation.map((item) => {
               const active = isCurrentPath(pathname, item.href);
 
@@ -56,48 +70,70 @@ export function SiteHeader() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   onClick={closeMobileMenu}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition duration-200 ease-out ${
+                  className={`relative rounded-xl px-4 py-2.5 text-sm font-medium transition duration-300 ${
                     active
-                      ? "bg-white text-primary shadow-[0_8px_24px_rgba(8,17,31,0.08)]"
-                      : "text-slate-600 hover:-translate-y-0.5 hover:bg-white hover:text-slate-950"
+                      ? "bg-white/[0.06] text-white"
+                      : "text-slate-400 hover:bg-white/[0.04] hover:text-white"
                   }`}
                 >
                   {item.label}
+
+                  {active && (
+                    <span className="absolute inset-x-4 -bottom-[17px] h-0.5 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.95)]" />
+                  )}
                 </Link>
               );
             })}
           </nav>
 
+          {/* Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/contact"
               onClick={closeMobileMenu}
-              className="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary px-4 py-2 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(var(--primary-rgb),0.22)] transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-strong hover:shadow-[0_16px_48px_rgba(var(--primary-rgb),0.26)] sm:px-5 sm:py-2.5"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl border border-blue-400/20 bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_16px_38px_-18px_rgba(37,99,235,0.95)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500 sm:px-5"
             >
               <span className="hidden sm:inline">Demander un devis</span>
               <span className="sm:hidden">Devis</span>
+
+              <span
+                aria-hidden="true"
+                className="transition duration-300 group-hover:translate-x-1"
+              >
+                →
+              </span>
             </Link>
 
+            {/* Menu mobile */}
             <button
               type="button"
               aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-border bg-white text-slate-900 transition duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 lg:hidden"
               onClick={() => setMobileMenuOpen((value) => !value)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white transition duration-300 hover:border-blue-500/30 hover:bg-white/[0.07] lg:hidden"
             >
               <span className="sr-only">
                 {mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               </span>
+
               <span className="flex flex-col gap-1.5">
                 <span
-                  className={`h-0.5 w-5 rounded-full bg-current transition duration-200 ease-out ${mobileMenuOpen ? "translate-y-2 rotate-45" : ""}`}
+                  className={`h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                    mobileMenuOpen ? "translate-y-2 rotate-45" : ""
+                  }`}
                 />
+
                 <span
-                  className={`h-0.5 w-5 rounded-full bg-current transition duration-200 ease-out ${mobileMenuOpen ? "opacity-0" : ""}`}
+                  className={`h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                    mobileMenuOpen ? "opacity-0" : ""
+                  }`}
                 />
+
                 <span
-                  className={`h-0.5 w-5 rounded-full bg-current transition duration-200 ease-out ${mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+                  className={`h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                    mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
+                  }`}
                 />
               </span>
             </button>
@@ -105,11 +141,16 @@ export function SiteHeader() {
         </div>
       </div>
 
+      {/* Navigation mobile */}
       <div
         id="mobile-navigation"
-        className={`overflow-hidden border-t border-border bg-white/96 transition-[max-height,opacity,transform] duration-300 ease-out lg:hidden ${mobileMenuOpen ? "max-h-96 translate-y-0 opacity-100" : "pointer-events-none max-h-0 -translate-y-2 opacity-0"}`}
+        className={`overflow-hidden border-t border-white/[0.07] bg-[#020817]/95 transition-[max-height,opacity,transform] duration-300 lg:hidden ${
+          mobileMenuOpen
+            ? "max-h-[520px] translate-y-0 opacity-100"
+            : "pointer-events-none max-h-0 -translate-y-2 opacity-0"
+        }`}
       >
-        <div className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-4 sm:px-6">
           <div className="grid gap-2">
             {siteConfig.navigation.map((item) => {
               const active = isCurrentPath(pathname, item.href);
@@ -120,10 +161,10 @@ export function SiteHeader() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   onClick={closeMobileMenu}
-                  className={`rounded-2xl px-4 py-3 text-sm font-medium transition duration-200 ease-out ${
+                  className={`rounded-xl px-4 py-3 text-sm font-medium transition duration-300 ${
                     active
-                      ? "bg-primary/5 text-primary"
-                      : "bg-white text-slate-600 hover:-translate-y-0.5 hover:bg-slate-50 hover:text-slate-950"
+                      ? "border border-blue-500/20 bg-blue-600/10 text-blue-300"
+                      : "border border-transparent text-slate-400 hover:border-white/10 hover:bg-white/[0.04] hover:text-white"
                   }`}
                 >
                   {item.label}
@@ -134,9 +175,10 @@ export function SiteHeader() {
             <Link
               href="/contact"
               onClick={closeMobileMenu}
-              className="mt-2 inline-flex items-center justify-center rounded-2xl border border-primary/30 bg-primary px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_rgba(var(--primary-rgb),0.2)] transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-primary-strong hover:shadow-[0_16px_42px_rgba(var(--primary-rgb),0.24)]"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-blue-500"
             >
               Demander un devis
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
