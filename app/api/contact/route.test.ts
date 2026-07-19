@@ -21,6 +21,7 @@ function createValidPayload(overrides: Partial<ContactFormValues> = {}): Contact
     need: "  Création de site vitrine  ",
     message:
       "  Nous souhaitons un accompagnement pour refondre notre site vitrine B2B avec une approche claire.  ",
+    consent: true,
     honeypot: "",
     startedAt: String(Date.now() - 3000),
     ...overrides,
@@ -69,6 +70,7 @@ describe("POST /api/contact", () => {
         email: "alice@example.com",
         phone: "+33 6 12 34 56 78",
         need: "Création de site vitrine",
+        consent: true,
       }),
     );
   });
@@ -83,6 +85,7 @@ describe("POST /api/contact", () => {
           phone: "",
           need: "",
           message: "",
+          consent: false,
           honeypot: "",
           startedAt: String(Date.now() - 3000),
         },
@@ -103,6 +106,7 @@ describe("POST /api/contact", () => {
       email: "Indiquez une adresse email valide.",
       need: "Précisez brièvement votre besoin.",
       message: "Le message doit contenir au moins 20 caractères.",
+      consent: "Veuillez accepter le traitement de vos données pour continuer.",
     });
     expect(contactMailerMock.sendContactEmails).not.toHaveBeenCalled();
   });

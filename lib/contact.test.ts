@@ -19,6 +19,7 @@ function createValidContactValues(overrides: Partial<ContactFormValues> = {}): C
     need: "  Création de site vitrine  ",
     message:
       "  Nous souhaitons un accompagnement pour refondre notre site vitrine B2B avec une approche claire.  ",
+    consent: true,
     honeypot: "",
     startedAt: String(Date.now() - 3000),
     ...overrides,
@@ -36,6 +37,7 @@ describe("contact validation helpers", () => {
       phone: "",
       need: "",
       message: "",
+      consent: false,
       honeypot: "",
     });
     expect(values.startedAt).toMatch(/^\d+$/);
@@ -111,5 +113,11 @@ describe("contact validation helpers", () => {
       need: "Précisez brièvement votre besoin.",
       message: "Le message doit contenir au moins 20 caractères.",
     });
+  });
+
+  it("requires consent before submission", () => {
+    const errors = validateContactForm(createValidContactValues({ consent: false }));
+
+    expect(errors.consent).toBe("Veuillez accepter le traitement de vos données pour continuer.");
   });
 });

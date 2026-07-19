@@ -5,6 +5,7 @@ export type ContactFormValues = {
   phone: string;
   need: string;
   message: string;
+  consent: boolean;
   honeypot: string;
   startedAt: string;
 };
@@ -22,6 +23,14 @@ const MAX_LENGTHS = {
   message: 4000,
 };
 
+export const contactNeedOptions = [
+  "Start Digital — site vitrine simple",
+  "Grow Business — site intermédiaire avec intégrations",
+  "Scale Enterprise — site premium sur mesure",
+  "Support IT / maintenance",
+  "Autre demande",
+];
+
 export function createEmptyContactValues(): ContactFormValues {
   return {
     name: "",
@@ -30,6 +39,7 @@ export function createEmptyContactValues(): ContactFormValues {
     phone: "",
     need: "",
     message: "",
+    consent: false,
     honeypot: "",
     startedAt: String(Date.now()),
   };
@@ -43,6 +53,7 @@ export function normalizeContactValues(values: ContactFormValues): ContactFormVa
     phone: values.phone.trim().slice(0, MAX_LENGTHS.phone),
     need: values.need.trim().slice(0, MAX_LENGTHS.need),
     message: values.message.trim().slice(0, MAX_LENGTHS.message),
+    consent: values.consent,
     honeypot: values.honeypot.trim(),
     startedAt: values.startedAt,
   };
@@ -76,7 +87,7 @@ export function validateContactForm(values: ContactFormValues): ContactFieldErro
   }
 
   if (normalized.company.length > MAX_LENGTHS.company) {
-    errors.company = "Le nom de l’entreprise est trop long.";
+    errors.company = "Le nom de l'entreprise est trop long.";
   }
 
   if (!isValidEmail(normalized.email)) {
@@ -84,7 +95,7 @@ export function validateContactForm(values: ContactFormValues): ContactFieldErro
   }
 
   if (normalized.email.length > MAX_LENGTHS.email) {
-    errors.email = "L’adresse email est trop longue.";
+    errors.email = "L'adresse email est trop longue.";
   }
 
   if (normalized.phone && !isValidPhone(normalized.phone)) {
@@ -109,6 +120,10 @@ export function validateContactForm(values: ContactFormValues): ContactFieldErro
 
   if (normalized.message.length > MAX_LENGTHS.message) {
     errors.message = "Le message est trop long.";
+  }
+
+  if (!normalized.consent) {
+    errors.consent = "Veuillez accepter le traitement de vos données pour continuer.";
   }
 
   return errors;

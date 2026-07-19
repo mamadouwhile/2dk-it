@@ -8,6 +8,7 @@ import { ContactForm } from "@/components/contact-form";
 import { StructuredData } from "@/components/structured-data";
 import { siteConfig } from "@/lib/site";
 import { createPageMetadata } from "@/lib/seo";
+import Link from "next/link";
 
 export const metadata = createPageMetadata(
   "Contact",
@@ -41,8 +42,8 @@ export default function ContactPage() {
   return (
     <PageShell
       eyebrow="Contact"
-      title="Une page de contact pensée pour convertir sans friction"
-      description="Coordonnées, délai de réponse, RGPD clair et formulaire validé côté client comme côté serveur."
+      title="Parlons de votre projet web ou de vos besoins IT"
+      description="Expliquez votre besoin en quelques lignes. Nous revenons vers vous rapidement avec une réponse claire et adaptée."
     >
       <StructuredData data={contactStructuredData} />
 
@@ -102,7 +103,12 @@ export default function ContactPage() {
 
               <Callout tone="neutral" className="mt-6">
                 <p className="text-sm leading-6 text-slate-700">
-                  Mention RGPD: vos données sont utilisées uniquement pour traiter votre demande et vous recontacter.
+                  Vos données sont utilisées uniquement pour traiter votre demande, sont conservées 3 ans maximum et ne sont
+                  jamais cédées à des tiers. Voir la{" "}
+                  <Link href="/politique-de-confidentialite" className="font-medium text-primary underline underline-offset-4">
+                    politique de confidentialité
+                  </Link>
+                  .
                 </p>
               </Callout>
             </CardBody>

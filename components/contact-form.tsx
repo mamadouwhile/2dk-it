@@ -32,7 +32,7 @@ export function ContactForm() {
 
   const hasErrors = useMemo(() => hasContactErrors(errors), [errors]);
 
-  function updateField<K extends keyof ContactFormValues>(field: K, value: string) {
+  function updateField<K extends keyof ContactFormValues>(field: K, value: ContactFormValues[K]) {
     setValues((current) => ({ ...current, [field]: value }));
     setErrors((current) => {
       if (!current[field]) {
@@ -81,7 +81,7 @@ export function ContactForm() {
         setErrors(nextPayloadErrors);
         setState({
           kind: "error",
-          message: payload.message ?? "Une erreur est survenue pendant l’envoi.",
+          message: payload.message ?? "Une erreur est survenue pendant l'envoi.",
         });
         return;
       }
@@ -95,7 +95,7 @@ export function ContactForm() {
     } catch {
       setState({
         kind: "error",
-        message: "Impossible d’envoyer votre demande pour le moment.",
+        message: "Impossible d'envoyer votre demande pour le moment.",
       });
     }
   }
@@ -103,12 +103,12 @@ export function ContactForm() {
   return (
     <form className="space-y-6" onSubmit={handleSubmit} noValidate>
       {state.kind === "success" ? (
-        <Callout tone="accent" className="ds-animated-entry">
-          <p className="text-sm leading-6 text-slate-700">{state.message}</p>
+        <Callout tone="accent">
+          <p className="text-sm leading-6 text-slate-100">{state.message}</p>
         </Callout>
       ) : state.kind === "error" ? (
-        <Callout tone="neutral" className="ds-animated-entry">
-          <p className="text-sm leading-6 text-slate-700">{state.message}</p>
+        <Callout tone="neutral">
+          <p className="text-sm leading-6 text-slate-100">{state.message}</p>
         </Callout>
       ) : null}
 
@@ -164,7 +164,7 @@ export function ContactForm() {
         <FieldShell
           label="Téléphone"
           fieldId="contact-phone"
-          helperText="Optionnel. Nous l’utiliserons uniquement si nécessaire."
+          helperText="Optionnel. Nous l'utiliserons uniquement si nécessaire."
           errorText={errors.phone}
         >
           <Input
@@ -199,7 +199,7 @@ export function ContactForm() {
       <FieldShell
         label="Message"
         fieldId="contact-message"
-        helperText="Décrivez brièvement le contexte, l’objectif et l’échéance souhaitée."
+        helperText="Décrivez brièvement le contexte, l'objectif et l'échéance souhaitée."
         errorText={errors.message}
       >
         <Textarea
@@ -215,8 +215,37 @@ export function ContactForm() {
         />
       </FieldShell>
 
+      <div className="flex items-start gap-3 rounded-2xl border border-border bg-surface-strong/40 p-4">
+        <input
+          id="contact-consent"
+          name="consent"
+          type="checkbox"
+          required
+          checked={values.consent}
+          onChange={(event) => updateField("consent", event.target.checked)}
+          aria-invalid={Boolean(errors.consent)}
+          aria-describedby={errors.consent ? "contact-consent-error" : undefined}
+          className="mt-1 h-4 w-4 rounded border-white/20 bg-slate-900 text-primary focus:ring-primary/20"
+        />
+        <label htmlFor="contact-consent" className="text-sm leading-6 text-slate-300">
+          J&apos;accepte que mes informations soient utilisées pour traiter ma demande, conformément à la{" "}
+          <a
+            href="/politique-de-confidentialite"
+            className="text-primary underline decoration-primary/25 underline-offset-4"
+          >
+            politique de confidentialité
+          </a>
+          .
+        </label>
+      </div>
+      {errors.consent ? (
+        <p id="contact-consent-error" className="text-sm text-red-300">
+          {errors.consent}
+        </p>
+      ) : null}
+
       <div className="sr-only">
-        <label htmlFor="companyWebsite">Site web de l’entreprise</label>
+        <label htmlFor="companyWebsite">Site web de l'entreprise</label>
         <input
           id="companyWebsite"
           name="companyWebsite"
@@ -248,7 +277,7 @@ export function ContactForm() {
       </div>
 
       {hasErrors ? (
-        <p className="text-sm text-red-600">Merci de vérifier les champs signalés.</p>
+        <p className="text-sm text-red-300">Merci de vérifier les champs signalés.</p>
       ) : null}
     </form>
   );

@@ -35,7 +35,12 @@ const servicesStructuredData = {
       item: {
         "@type": "Service",
         name: offer.name,
+        alternateName: offer.commercialName,
         description: offer.summary,
+        offers: {
+          "@type": "Offer",
+          priceSpecification: offer.priceRange,
+        },
         provider: {
           "@type": "Organization",
           name: "2DK IT",
@@ -51,8 +56,8 @@ export default function ServicesPage() {
   return (
     <PageShell
       eyebrow="Services"
-      title="Des offres web et IT lisibles, comparables et pensées pour décider vite"
-      description="2DK IT présente ses formules avec une logique simple: comprendre, comparer et choisir sans friction."
+      title="Des offres web et IT claires pour choisir la formule adaptée"
+      description="2DK IT présente ses services de façon simple pour vous aider à comparer, comprendre et avancer plus vite."
     >
       <StructuredData data={servicesStructuredData} />
 
@@ -72,15 +77,15 @@ export default function ServicesPage() {
                 Trois offres web. Une même exigence de clarté et de qualité.
               </h2>
               <p className="text-base leading-7 text-slate-600">
-                Les formules sont structurées pour faire ressortir les différences sans créer de confusion.
-                L’objectif est simple: choisir la bonne option plus vite.
+                Les formules sont présentées de manière claire pour vous aider à comprendre rapidement ce qui correspond le mieux à votre besoin.
               </p>
             </div>
 
             <Callout tone="neutral" className="space-y-3">
               <p className="ds-kicker">Lecture rapide</p>
               <p className="text-sm leading-6 text-slate-700">
-                La grille compare le niveau de personnalisation, les livrables et la valeur ajoutée de chaque offre.
+                La grille compare le niveau de personnalisation, les livrables, la fourchette de prix et la valeur
+                ajoutée de chaque offre.
               </p>
             </Callout>
           </div>
@@ -92,10 +97,10 @@ export default function ServicesPage() {
           <div className="space-y-3 max-w-2xl">
             <p className="ds-eyebrow">Comparatif des offres web</p>
             <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Comparez les formules en un coup d’œil.
+              Comparez les formules en un coup d'œil.
             </h2>
             <p className="text-base leading-7 text-slate-600">
-              Chaque offre est construite pour répondre à un niveau d’ambition différent.
+              Chaque offre répond à un niveau de besoin différent, avec un cadre lisible dès le départ.
             </p>
           </div>
 
@@ -103,67 +108,79 @@ export default function ServicesPage() {
             {webOffers.map((offer, index) => (
               <Reveal key={offer.name} delay={index * 90}>
                 <Card className={offer.tone === "accent" ? "border-primary/20 bg-primary/5" : ""}>
-                <CardHeader className="space-y-4">
-                  <div className="flex items-center justify-between gap-3">
-                    <Tag>{offer.name}</Tag>
-                    {offer.tone === "accent" ? <Badge tone="accent">Recommandée</Badge> : null}
-                  </div>
-                  <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{offer.name}</h3>
-                  <p className="text-sm leading-6 text-slate-600">{offer.summary}</p>
-                </CardHeader>
+                  <CardHeader className="space-y-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <Tag>{offer.commercialName}</Tag>
+                      {offer.tone === "accent" ? <Badge tone="accent">Recommandée</Badge> : null}
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{offer.name}</h3>
+                      <p className="text-sm font-semibold text-primary">{offer.priceRange}</p>
+                    </div>
+                    <p className="text-sm leading-6 text-slate-600">{offer.summary}</p>
+                  </CardHeader>
 
-                <CardBody className="space-y-5">
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Pour qui</p>
-                    <p className="text-sm leading-6 text-slate-600">{offer.who}</p>
-                  </div>
+                  <CardBody className="space-y-5">
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Pour qui</p>
+                      <p className="text-sm leading-6 text-slate-600">{offer.who}</p>
+                    </div>
 
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Objectifs</p>
-                    <ul className="space-y-2 text-sm text-slate-600">
-                      {offer.goals.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
-                          <span className="leading-6">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Objectifs</p>
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        {offer.goals.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                            <span className="leading-6">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Livrables</p>
-                    <ul className="space-y-2 text-sm text-slate-600">
-                      {offer.deliverables.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <span className="mt-1 h-2 w-2 rounded-full bg-slate-300" />
-                          <span className="leading-6">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Livrables</p>
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        {offer.deliverables.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-1 h-2 w-2 rounded-full bg-slate-300" />
+                            <span className="leading-6">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Bénéfices</p>
-                    <ul className="space-y-2 text-sm text-slate-600">
-                      {offer.benefits.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
-                          <span className="leading-6">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Bénéfices</p>
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        {offer.benefits.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                            <span className="leading-6">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  <Callout tone={offer.tone === "accent" ? "accent" : "default"} className="p-4 sm:p-4">
-                    <p className="text-sm leading-6 text-slate-700">
-                      <span className="font-semibold text-slate-950">Personnalisation :</span> {offer.personalization}
-                    </p>
-                  </Callout>
-                </CardBody>
+                    <Callout tone={offer.tone === "accent" ? "accent" : "default"} className="p-4 sm:p-4">
+                      <p className="text-sm leading-6 text-slate-700">
+                        <span className="font-semibold text-slate-950">Personnalisation :</span> {offer.personalization}
+                      </p>
+                    </Callout>
+
+                    <ButtonLink href="/contact" variant={offer.tone === "accent" ? "primary" : "secondary"} className="w-full justify-center">
+                      Demander un devis {offer.commercialName}
+                    </ButtonLink>
+                  </CardBody>
                 </Card>
               </Reveal>
             ))}
           </div>
+
+          <p className="text-xs leading-5 text-slate-500">
+            Fourchettes indicatives pour un site vitrine standard, ajustées après cadrage détaillé du volume de
+            contenus et des intégrations souhaitées.
+          </p>
         </Reveal>
 
         <Reveal as="section" className="space-y-6" delay={160}>
@@ -181,13 +198,13 @@ export default function ServicesPage() {
             {supportItems.map((item, index) => (
               <Reveal key={item.title} delay={index * 80}>
                 <Card>
-                <CardHeader>
-                  <Tag>{item.title}</Tag>
-                  <h3 className="ds-subheading text-xl">{item.title}</h3>
-                </CardHeader>
-                <CardBody>
-                  <p className="text-sm leading-6 text-slate-600">{item.description}</p>
-                </CardBody>
+                  <CardHeader>
+                    <Tag>{item.title}</Tag>
+                    <h3 className="ds-subheading text-xl">{item.title}</h3>
+                  </CardHeader>
+                  <CardBody>
+                    <p className="text-sm leading-6 text-slate-600">{item.description}</p>
+                  </CardBody>
                 </Card>
               </Reveal>
             ))}
@@ -198,10 +215,10 @@ export default function ServicesPage() {
           <div className="space-y-4">
             <p className="ds-eyebrow">Comment choisir votre formule</p>
             <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Le bon choix dépend du niveau d’exigence et de la place du site dans votre acquisition.
+              Le bon choix dépend du niveau d'exigence et de la place du site dans votre acquisition.
             </h2>
             <p className="text-base leading-7 text-slate-600">
-              Plus l’enjeu est stratégique, plus la structure doit être riche et personnalisée.
+              Plus l'enjeu est stratégique, plus la structure doit être riche et personnalisée.
             </p>
           </div>
 
@@ -209,9 +226,9 @@ export default function ServicesPage() {
             {chooseSteps.map((step, index) => (
               <Reveal key={step.title} delay={index * 80}>
                 <Callout className="space-y-2">
-                <p className="ds-kicker">Choix</p>
-                <h3 className="text-lg font-semibold text-slate-950">{step.title}</h3>
-                <p className="text-sm leading-6 text-slate-600">{step.description}</p>
+                  <p className="ds-kicker">Choix</p>
+                  <h3 className="text-lg font-semibold text-slate-950">{step.title}</h3>
+                  <p className="text-sm leading-6 text-slate-600">{step.description}</p>
                 </Callout>
               </Reveal>
             ))}

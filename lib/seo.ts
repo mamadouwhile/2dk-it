@@ -7,11 +7,14 @@ export function createPageMetadata(
   description: string,
   path: string,
 ): Metadata {
+  const url = new URL(path, siteUrl).toString();
+  const ogImage = new URL("/opengraph-image", siteUrl).toString();
+
   return {
     title,
     description,
     alternates: {
-      canonical: path,
+      canonical: url,
     },
     openGraph: {
       type: "website",
@@ -19,10 +22,10 @@ export function createPageMetadata(
       siteName: "2DK IT",
       title,
       description,
-      url: new URL(path, siteUrl).toString(),
+      url,
       images: [
         {
-          url: "/opengraph-image",
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `2DK IT - ${title}`,
@@ -33,7 +36,7 @@ export function createPageMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: ["/opengraph-image"],
+      images: [ogImage],
     },
     robots: {
       index: true,

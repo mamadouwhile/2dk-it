@@ -3,61 +3,84 @@ import Link from "next/link";
 
 import { LegalPage } from "@/components/legal-page";
 import { Reveal } from "@/components/reveal";
+import { CookieConsentPreferencesLink } from "@/components/cookie-consent-banner";
 import { createPageMetadata } from "@/lib/seo";
-import { companyName } from "@/lib/site";
+import { dpoEmail } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata(
   "Politique de cookies",
-  "Politique de cookies de 2DK IT, claire et prête à compléter selon les outils utilisés.",
+  "Quels cookies utilise 2DK IT et comment gérer vos préférences.",
   "/politique-de-cookies",
 );
 
-export default function CookiesPolicyPage() {
+export default function CookiePolicyPage() {
   return (
     <LegalPage
-      eyebrow="Politique de cookies"
+      eyebrow="Cookies et traceurs"
       title="Politique de cookies"
-      description="Cette politique détaille les cookies susceptibles d’être déposés et leur gestion."
+      description="Voici ce qu'est un cookie, pourquoi nous en utilisons certains, et comment vous pouvez faire vos choix à tout moment."
       lastUpdated="21 juin 2026"
     >
       <Reveal as="section" className="space-y-4">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">1. Qu’est-ce qu’un cookie ?</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">1. Qu&apos;est-ce qu&apos;un cookie ?</h2>
         <p className="text-sm leading-7 text-slate-600">
-          Un cookie est un petit fichier enregistré sur votre appareil lors de la consultation du site édité par
-          <strong className="text-slate-950"> {companyName}</strong>. Il peut
-          servir au fonctionnement du site, aux mesures d’audience ou à l’amélioration de l’expérience utilisateur.
+          Un cookie est un petit fichier déposé sur votre appareil lors de votre visite sur notre site. Il permet
+          de mémoriser certaines informations, comme vos préférences de navigation ou des statistiques de
+          fréquentation.
         </p>
       </Reveal>
 
       <Reveal as="section" className="space-y-4" delay={80}>
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">2. Cookies utilisés</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">2. Quels cookies utilisons-nous ?</h2>
         <p className="text-sm leading-7 text-slate-600">
-          Les catégories de cookies utilisées sur ce site sont à compléter selon les outils réellement déployés:
-          cookies strictement nécessaires, cookies de mesure d’audience, cookies de préférences et éventuels cookies
-          tiers.
+          Nous utilisons des cookies strictement nécessaires au fonctionnement du site, des cookies de mesure
+          d&apos;audience pour comprendre comment le site est utilisé, des cookies de fonctionnalité, et
+          éventuellement des cookies liés à des services tiers intégrés au site.
         </p>
       </Reveal>
 
       <Reveal as="section" className="space-y-4" delay={160}>
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">3. Gestion du consentement</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">3. Avons-nous besoin de votre accord ?</h2>
         <p className="text-sm leading-7 text-slate-600">
-          Si des cookies non essentiels sont utilisés, un bandeau de consentement devra permettre d’accepter,
-          de refuser ou de paramétrer les choix.
+          Les cookies strictement nécessaires au fonctionnement du site ne demandent pas votre accord. Tous les
+          autres cookies ne sont déposés qu&apos;après que vous avez donné votre consentement via le bandeau
+          affiché sur le site.
         </p>
       </Reveal>
 
       <Reveal as="section" className="space-y-4" delay={240}>
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">4. Durée de conservation</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">4. Comment changer d&apos;avis ?</h2>
         <p className="text-sm leading-7 text-slate-600">
-          La durée de conservation de chaque cookie doit être précisée ici selon l’outil concerné et la politique
-          de paramétrage retenue.
+          Vous pouvez modifier vos choix à tout moment directement depuis ce site.
+        </p>
+        <p className="text-sm leading-7 text-slate-600">
+          <CookieConsentPreferencesLink />
+        </p>
+        <p className="text-sm leading-7 text-slate-600">
+          Vous pouvez également configurer votre navigateur pour refuser tout ou partie des cookies, sachant que
+          cela peut affecter certaines fonctionnalités du site.
         </p>
       </Reveal>
 
       <Reveal as="section" className="space-y-4" delay={320}>
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">5. Pages associées</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">5. Combien de temps votre choix est-il conservé ?</h2>
         <p className="text-sm leading-7 text-slate-600">
-          Consultez aussi les <Link className="text-primary underline decoration-primary/25 underline-offset-4" href="/mentions-legales">mentions légales</Link>, la <Link className="text-primary underline decoration-primary/25 underline-offset-4" href="/politique-de-confidentialite">politique de confidentialité</Link> et les <Link className="text-primary underline decoration-primary/25 underline-offset-4" href="/cgu">CGU</Link>.
+          Votre choix est conservé pendant une durée conforme aux recommandations de la CNIL. Passé ce délai,
+          votre consentement pourra vous être redemandé.
+        </p>
+      </Reveal>
+
+      <Reveal as="section" className="space-y-4" delay={400}>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-950">6. Une question ?</h2>
+        <p className="text-sm leading-7 text-slate-600">
+          Écrivez-nous à <strong className="text-slate-950">{dpoEmail}</strong>. Retrouvez aussi notre{" "}
+          <Link
+            className="text-primary underline decoration-primary/25 underline-offset-4"
+            href="/politique-de-confidentialite"
+          >
+            politique de confidentialité
+          </Link>
+          .
         </p>
       </Reveal>
     </LegalPage>
