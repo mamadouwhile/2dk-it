@@ -2,20 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { PageShell } from "@/components/page-shell";
-import { ProjectPreview } from "@/components/portfolio/project-preview";
 import { Reveal } from "@/components/reveal";
 import { Badge, Tag } from "@/components/ui/badge";
-import { Callout } from "@/components/ui/callout";
-import { Card, CardBody } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { ButtonLink } from "@/components/ui/button";
-import { portfolioProjects } from "@/lib/portfolio";
 import { StructuredData } from "@/components/structured-data";
+import { portfolioProjects } from "@/lib/portfolio";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata(
   "Portfolio",
-  "Découvrez des exemples de projets qui montrent la qualité de production et la finesse d’exécution de 2DK IT.",
+  "Découvrez les réalisations web de 2DK IT : sites vitrines, plateformes personnalisées et expériences digitales modernes.",
   "/portfolio",
 );
 
@@ -25,7 +21,7 @@ const portfolioStructuredData = {
   name: "Portfolio 2DK IT",
   url: "https://www.2dk-it.fr/portfolio",
   description:
-    "Découvrez des exemples de projets qui montrent la qualité de production et la finesse d’exécution de 2DK IT.",
+    "Découvrez les réalisations web de 2DK IT : sites vitrines, plateformes personnalisées et expériences digitales modernes.",
   mainEntity: {
     "@type": "ItemList",
     itemListElement: portfolioProjects.map((project, index) => ({
@@ -37,311 +33,561 @@ const portfolioStructuredData = {
         name: project.name,
         additionalType: project.type,
         description: project.context,
-        url: project.href ? `https://www.2dk-it.fr${project.href}` : "https://www.2dk-it.fr/portfolio",
+        url: project.href
+          ? `https://www.2dk-it.fr${project.href}`
+          : "https://www.2dk-it.fr/portfolio",
       },
     })),
   },
   inLanguage: "fr-FR",
 };
 
+const expertiseItems = [
+  "Développement web",
+  "Design responsive",
+  "Expérience utilisateur",
+  "Optimisation SEO",
+  "Performance",
+  "Maintenance",
+];
+
+const technologies = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "Tailwind CSS",
+  "MySQL",
+  "GitHub",
+];
+
+const strengths = [
+  {
+    number: "01",
+    title: "Design moderne",
+    description:
+      "Des interfaces professionnelles qui valorisent votre activité dès les premières secondes.",
+  },
+  {
+    number: "02",
+    title: "Performance",
+    description:
+      "Des sites rapides, fluides et optimisés pour fonctionner correctement sur tous les écrans.",
+  },
+  {
+    number: "03",
+    title: "Code maintenable",
+    description:
+      "Une base technique structurée pour faciliter les évolutions futures de votre projet.",
+  },
+  {
+    number: "04",
+    title: "Accompagnement",
+    description:
+      "Un suivi clair avant, pendant et après la mise en ligne de votre site internet.",
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Analyse",
+    description:
+      "Nous échangeons sur votre activité, votre cible et les objectifs de votre projet.",
+  },
+  {
+    number: "02",
+    title: "Conception",
+    description:
+      "Nous définissons la structure, l'identité visuelle et le parcours utilisateur.",
+  },
+  {
+    number: "03",
+    title: "Développement",
+    description:
+      "Nous développons une solution responsive, performante et adaptée à vos besoins.",
+  },
+  {
+    number: "04",
+    title: "Livraison",
+    description:
+      "Nous vérifions le projet, réalisons les derniers ajustements et assurons sa mise en ligne.",
+  },
+];
+
+function ArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden="true"
+      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+    >
+      <path
+        d="M4 10h12M11 5l5 5-5 5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+      <svg
+        viewBox="0 0 20 20"
+        fill="none"
+        aria-hidden="true"
+        className="h-3.5 w-3.5"
+      >
+        <path
+          d="M4.5 10.25 8 13.75 15.5 6.25"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
 export default function PortfolioPage() {
   const featuredProject = portfolioProjects[0];
+  const otherProjects = portfolioProjects.slice(1);
 
   return (
     <PageShell
       eyebrow="Portfolio"
-      title="Des projets sobres, lisibles et pensés pour rassurer rapidement"
-      description="Chaque projet montre le niveau de finition, la logique de production et la capacité à faire évoluer une base propre."
+      title="Des réalisations conçues pour valoriser chaque entreprise"
+      description="Découvrez une sélection de sites internet modernes, performants et adaptés aux besoins de nos clients."
     >
       <StructuredData data={portfolioStructuredData} />
 
-      <div className="flex flex-col gap-14 lg:gap-18">
-        <Reveal as="section" className="space-y-5">
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge tone="accent">Réalisations</Badge>
-            <Tag>Cas client</Tag>
-            <Tag>Mockups</Tag>
-            <Tag>Support IT</Tag>
-          </div>
+      <div className="flex flex-col gap-20 lg:gap-28">
+        {/* Introduction */}
+        <Reveal
+          as="section"
+          className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center"
+        >
+          <div className="space-y-7">
+            <div className="flex flex-wrap gap-3">
+              <Badge tone="accent">Nos réalisations</Badge>
+              <Tag>Web</Tag>
+              <Tag>UI / UX</Tag>
+              <Tag>Responsive</Tag>
+            </div>
 
-          <div className="grid gap-6 lg:grid-cols-[1fr_0.92fr] lg:items-center">
-            <div className="space-y-4">
-              <p className="ds-eyebrow">Intro</p>
-              <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                Un portfolio pensé pour montrer le niveau de finition, pas pour faire du bruit.
+            <div className="max-w-3xl space-y-5">
+              <p className="ds-eyebrow">L'expertise 2DK IT</p>
+
+              <h2 className="text-4xl font-semibold tracking-[-0.05em] text-slate-950 sm:text-5xl lg:text-6xl">
+                Des projets qui parlent d'eux-mêmes.
               </h2>
-              <p className="text-base leading-7 text-slate-600">
-                Les projets sont présentés avec un langage clair: contexte, problème, solution et bénéfice.
-                L’objectif est de rendre la qualité visible immédiatement.
+
+              <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+                Nous concevons des expériences digitales modernes qui renforcent
+                l'image de marque, facilitent la navigation et donnent envie de
+                passer à l'action.
               </p>
             </div>
 
-            <Callout tone="neutral" className="space-y-3">
-              <p className="ds-kicker">Architecture de contenu</p>
-              <p className="text-sm leading-6 text-slate-700">
-                La source de données est centralisée dans un tableau TypeScript pour ajouter facilement de nouveaux projets.
-              </p>
-            </Callout>
+            <div className="flex flex-col gap-3 sm:flex-row">
+  <a
+    href="#realisations"
+    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg"
+  >
+    Voir les réalisations
+    <ArrowIcon />
+  </a>
+
+  <ButtonLink href="/contact" variant="ghost">
+    Parler de mon projet
+  </ButtonLink>
+</div>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-[1.12fr_0.88fr]">
-            <Card className="overflow-hidden p-0">
-              <div className="relative h-96 overflow-hidden sm:h-[26rem] lg:h-[30rem]">
-                {featuredProject.imageSrc ? (
-                  <Image
-                    src={featuredProject.imageSrc}
-                    alt={`Capture d'écran du site ${featuredProject.name}`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(min-width: 1024px) 56vw, 100vw"
-                    priority
-                  />
-                ) : null}
+          <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-950 p-6 shadow-2xl sm:p-8">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+            <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
 
-                <div
-                  className={`absolute inset-0 ${
-                    featuredProject.imageSrc
-                      ? "bg-linear-to-b from-slate-950/10 via-slate-950/50 to-slate-950/95"
-                      : `bg-linear-to-br ${featuredProject.imageAccent}`
-                  }`}
-                />
-
-                <div className="relative flex h-full flex-col justify-end p-6 sm:p-7">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="space-y-2">
-                      <Tag>{featuredProject.type}</Tag>
-                      <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                        {featuredProject.name}
-                      </h3>
-                    </div>
-                    <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-white/90">
-                      Projet phare
-                    </span>
-                  </div>
-
-                  <div className="mt-8 rounded-[1.75rem] border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
-                          Contexte
-                        </p>
-                        <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.context}</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
-                          Solution
-                        </p>
-                        <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.solution}</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-200">
-                          Résultat
-                        </p>
-                        <p className="mt-2 text-sm leading-6 text-white/90">{featuredProject.result}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <CardBody className="space-y-4 p-6 sm:p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Lecture rapide</p>
-                    <p className="text-sm leading-6 text-slate-600">
-                      Un projet sélectionné pour donner immédiatement le ton du portfolio.
-                    </p>
-                  </div>
-                  <ProjectPreview
-                    name={featuredProject.name}
-                    gallery={featuredProject.gallery ?? (featuredProject.imageSrc ? [featuredProject.imageSrc] : [])}
-                    href={featuredProject.href}
-                  />
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {[
-                    { label: "Lisibilité", value: "Élevée" },
-                    { label: "Confiance", value: "Renforcée" },
-                    { label: "Structure", value: "Éditoriale" },
-                  ].map((item) => (
-                    <div key={item.label} className="rounded-2xl border border-border bg-slate-50 p-4">
-                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-500">
-                        {item.label}
-                      </p>
-                      <p className="mt-2 text-sm font-medium text-slate-950">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardBody>
-            </Card>
-
-            <Callout tone="accent" className="space-y-4">
-              <p className="ds-kicker">Ce que l’on veut montrer</p>
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">
-                Un portfolio lisible, crédible et sans surcharge.
-              </h3>
-              <p className="text-sm leading-6 text-slate-700">
-                Les blocs suivent une logique de preuve, de hiérarchie et de respiration. C’est le même type de
-                clarté que l’on attend d’un grand site digital mature.
+            <div className="relative">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+                Nos domaines d'intervention
               </p>
-              <div className="grid gap-3">
-                {[
-                  "Un message principal net dès l’entrée.",
-                  "Des preuves visuelles sobres et utiles.",
-                  "Une lecture rapide, orientée décision.",
-                ].map((item) => (
-                  <div key={item} className="rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm leading-6 text-slate-700 shadow-[0_10px_30px_rgba(8,17,31,0.04)]">
-                    {item}
+
+              <h3 className="mt-4 text-2xl font-semibold tracking-tight !text-white sm:text-3xl">
+                Une maîtrise complète, de la conception à la mise en ligne.
+              </h3>
+
+              <div className="mt-8 grid gap-3">
+                {expertiseItems.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4"
+                  >
+                    <CheckIcon />
+
+                    <span className="text-sm font-medium text-slate-200">
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
-            </Callout>
+            </div>
           </div>
         </Reveal>
 
-        <Separator />
+        {/* Projet phare */}
+        {featuredProject ? (
+          <Reveal as="section" className="space-y-8" delay={80}>
+            <div className="max-w-3xl space-y-4">
+              <p className="ds-eyebrow">Projet à la une</p>
 
-        <Reveal as="section" className="space-y-6" delay={80}>
-          <div className="space-y-3 max-w-2xl">
-            <p className="ds-eyebrow">Grille de projets</p>
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Des cartes élégantes, avec l’essentiel de l’information.
-            </h2>
-            <p className="text-base leading-7 text-slate-600">
-              Chaque projet suit la même structure pour faciliter la lecture et la comparaison.
-            </p>
-          </div>
+              <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                Une réalisation sélectionnée pour son niveau de finition.
+              </h2>
+            </div>
 
-          <div className="grid gap-5 xl:grid-cols-3">
-            {portfolioProjects.map((project, index) => (
-              <Reveal key={project.name} delay={index * 90}>
-                <Card className="overflow-hidden p-0">
-                  <div className="relative h-48 w-full overflow-hidden sm:h-52">
-                    {project.imageSrc ? (
-                      <Image
-                        src={project.imageSrc}
-                        alt={`Capture d'écran du site ${project.name}`}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 1280px) 33vw, 100vw"
-                      />
-                    ) : (
-                      <div className={`h-full w-full bg-linear-to-br ${project.imageAccent}`} />
-                    )}
-                    <div className="absolute left-4 top-4">
-                      <Tag>{project.type}</Tag>
+            <article className="group relative overflow-hidden rounded-[2.5rem] border border-slate-800 bg-slate-950 shadow-2xl">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(37,99,235,0.2),transparent_35%)]" />
+
+              <div className="relative grid lg:min-h-[560px] lg:grid-cols-[0.82fr_1.18fr]">
+                <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+                      Projet phare
+                    </span>
+
+                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
+                      {featuredProject.type}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-7 text-4xl font-semibold tracking-[-0.05em] !text-white sm:text-5xl">
+                    {featuredProject.name}
+                  </h3>
+
+                  <p className="mt-5 text-base leading-8 text-slate-300">
+                    {featuredProject.context}
+                  </p>
+
+                  <div className="mt-8 space-y-5">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                        Notre solution
+                      </p>
+
+                      <p className="mt-2 text-sm leading-7 text-slate-300">
+                        {featuredProject.solution}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                        Résultat
+                      </p>
+
+                      <p className="mt-2 text-sm leading-7 text-slate-300">
+                        {featuredProject.result}
+                      </p>
                     </div>
                   </div>
 
-                  <CardBody className="space-y-5 p-6 sm:p-7">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between gap-3">
-                        <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{project.name}</h3>
-                        <Badge tone="subtle">{project.type}</Badge>
-                      </div>
-                      <p className="text-sm leading-6 text-slate-600">{project.context}</p>
+                  {featuredProject.href ? (
+                    <div className="mt-10">
+                      <ButtonLink href={featuredProject.href} variant="secondary">
+                        Voir le projet
+                      </ButtonLink>
                     </div>
+                  ) : null}
+                </div>
 
-                    <div className="space-y-3 text-sm leading-6 text-slate-600">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Problème</p>
-                        <p className="mt-2">{project.problem}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Solution</p>
-                        <p className="mt-2">{project.solution}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Résultat</p>
-                        <p className="mt-2">{project.result}</p>
-                      </div>
-                    </div>
-
-                    <ProjectPreview
-                      name={project.name}
-                      gallery={project.gallery ?? (project.imageSrc ? [project.imageSrc] : [])}
-                      href={project.href}
+                <div className="relative min-h-[360px] overflow-hidden bg-slate-900 lg:min-h-full">
+                  {featuredProject.imageSrc ? (
+                    <Image
+                      src={featuredProject.imageSrc}
+                      alt={`Aperçu du projet ${featuredProject.name}`}
+                      fill
+                      priority
+                      className="object-cover object-top transition duration-700 group-hover:scale-[1.025]"
+                      sizes="(min-width: 1024px) 58vw, 100vw"
                     />
-                  </CardBody>
-                </Card>
+                  ) : (
+                    <div
+                      className={`h-full w-full bg-linear-to-br ${featuredProject.imageAccent}`}
+                    />
+                  )}
+
+                  <div className="absolute inset-0 bg-linear-to-r from-slate-950/40 via-transparent to-transparent lg:from-slate-950/20" />
+
+                  <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/15 bg-slate-950/70 p-4 backdrop-blur-xl sm:inset-x-8 sm:bottom-8">
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+                          Expérience digitale
+                        </p>
+
+                        <p className="mt-1 text-sm font-medium text-white">
+                          Moderne, responsive et évolutive
+                        </p>
+                      </div>
+
+                      <span className="text-sm font-semibold text-blue-300">
+                        2DK IT
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </Reveal>
+        ) : null}
+
+        {/* Galerie */}
+        <Reveal
+          as="section"
+          id="realisations"
+          className="space-y-10 scroll-mt-28"
+          delay={120}
+        >
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+            <div className="max-w-3xl space-y-4">
+              <p className="ds-eyebrow">Toutes les réalisations</p>
+
+              <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                Une sélection de projets réalisés avec exigence.
+              </h2>
+            </div>
+
+            <p className="text-base leading-7 text-slate-600 lg:text-right">
+              Chaque projet possède sa propre identité tout en conservant une
+              structure claire, moderne et professionnelle.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {otherProjects.map((project, index) => (
+              <Reveal key={project.name} delay={index * 70}>
+                <article className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_70px_-35px_rgba(37,99,235,0.35)]">
+                  <div className="relative h-60 overflow-hidden bg-slate-100">
+                    {project.imageSrc ? (
+                      <Image
+                        src={project.imageSrc}
+                        alt={`Aperçu du projet ${project.name}`}
+                        fill
+                        className="object-cover object-top transition duration-700 group-hover:scale-105"
+                        sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      />
+                    ) : (
+                      <div
+                        className={`h-full w-full bg-linear-to-br ${project.imageAccent}`}
+                      />
+                    )}
+
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-950/35 via-transparent to-transparent opacity-70" />
+
+                    <div className="absolute left-5 top-5">
+                      <span className="rounded-full border border-white/20 bg-slate-950/60 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                        {project.type}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6 sm:p-7">
+                    <div>
+                      <h3 className="text-2xl font-semibold tracking-tight text-slate-950">
+                        {project.name}
+                      </h3>
+
+                      <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-600">
+                        {project.context}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                        Responsive
+                      </span>
+
+                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                        Performance
+                      </span>
+
+                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                        UI / UX
+                      </span>
+                    </div>
+
+                    {project.href ? (
+                      <div className="mt-auto pt-7">
+                        <ButtonLink href={project.href} variant="secondary" className="w-full">
+                          Voir le projet
+                        </ButtonLink>
+                      </div>
+                    ) : null}
+                  </div>
+                </article>
               </Reveal>
             ))}
           </div>
         </Reveal>
 
-        <Reveal as="section" delay={200}>
-          <Card className="bg-slate-950 text-white">
-            <CardBody className="grid gap-6 p-6 sm:p-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              <div className="space-y-3">
-                <p className="ds-kicker text-slate-300">Lecture de fond</p>
-                <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                  Une base visuelle plus mature, pour rassurer vite.
-                </h2>
-                <p className="text-sm leading-6 text-slate-200">
-                  Le portfolio combine contraste, lisibilité et preuves concrètes pour donner une impression de
-                  maîtrise immédiate.
-                </p>
-              </div>
+        {/* Technologies */}
+        <Reveal
+          as="section"
+          className="overflow-hidden rounded-[2.5rem] bg-slate-950 px-6 py-12 sm:px-10 lg:px-14 lg:py-16"
+          delay={170}
+        >
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+            <div className="space-y-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+                Technologies
+              </p>
 
-              <div className="grid gap-3 sm:grid-cols-3">
-                {[
-                  "Preuve",
-                  "Clarté",
-                  "Finition",
-                ].map((item) => (
-                  <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
-                    <p className="text-sm font-medium text-white">{item}</p>
-                    <p className="mt-2 text-sm leading-6 text-slate-300">
-                      Un repère visuel sobre pour structurer la décision.
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </CardBody>
-          </Card>
-        </Reveal>
-
-        <Reveal as="section" className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start" delay={160}>
-          <div className="space-y-4">
-            <p className="ds-eyebrow">Pourquoi ce format</p>
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Une structure simple à enrichir sans casser la cohérence.
-            </h2>
-            <p className="text-base leading-7 text-slate-600">
-              Le tableau TypeScript permet d’ajouter un projet, un mockup ou une capture plus tard sans refondre la page.
-            </p>
-          </div>
-
-          <Callout tone="accent" className="space-y-3">
-            <p className="ds-kicker">Ajout futur</p>
-            <p className="text-sm leading-6 text-slate-700">
-              Vous pourrez migrer cette source vers un CMS headless sans changer la logique d’affichage.
-            </p>
-          </Callout>
-        </Reveal>
-
-        <Reveal as="section" delay={240}>
-          <Callout tone="accent" className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="space-y-3">
-              <p className="ds-kicker">Contact</p>
-              <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                Vous avez un projet à présenter ? On peut en parler.
+              <h2 className="text-3xl font-semibold tracking-tight !text-white sm:text-4xl">
+                Des outils modernes pour créer des projets solides.
               </h2>
-              <p className="text-sm leading-6 text-slate-700">
-                Une présentation claire du contexte et du besoin suffit pour démarrer.
+
+              <p className="text-base leading-7 text-slate-300">
+                Nous choisissons les technologies en fonction des besoins du
+                projet, de ses performances et de ses futures évolutions.
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-              <ButtonLink href="/contact" variant="primary">
-                Demander un devis
-              </ButtonLink>
-              <ButtonLink href="/services" variant="ghost">
-                Voir les services
-              </ButtonLink>
+            <div className="flex flex-wrap gap-3">
+              {technologies.map((technology) => (
+                <span
+                  key={technology}
+                  className="rounded-full border border-white/10 bg-white/[0.05] px-5 py-3 text-sm font-medium text-slate-200 transition hover:border-primary/40 hover:bg-primary/10 hover:text-white"
+                >
+                  {technology}
+                </span>
+              ))}
             </div>
-          </Callout>
+          </div>
+        </Reveal>
+
+        {/* Points forts */}
+        <Reveal as="section" className="space-y-10" delay={210}>
+          <div className="mx-auto max-w-3xl space-y-4 text-center">
+            <p className="ds-eyebrow">Notre exigence</p>
+
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Des réalisations pensées pour inspirer confiance.
+            </h2>
+
+            <p className="text-base leading-7 text-slate-600">
+              Derrière chaque projet, nous recherchons le bon équilibre entre
+              esthétique, clarté, performance et simplicité d'utilisation.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {strengths.map((strength, index) => (
+              <Reveal key={strength.number} delay={index * 70}>
+                <article className="h-full rounded-[2rem] border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-7">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-sm font-semibold text-primary">
+                    {strength.number}
+                  </div>
+
+                  <h3 className="mt-7 text-xl font-semibold tracking-tight text-slate-950">
+                    {strength.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    {strength.description}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* Méthode */}
+        <Reveal as="section" className="space-y-10" delay={250}>
+          <div className="max-w-3xl space-y-4">
+            <p className="ds-eyebrow">Notre méthode</p>
+
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Un processus clair, du premier échange à la livraison.
+            </h2>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <Reveal key={step.number} delay={index * 70}>
+                <article className="relative h-full overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-7">
+                  <span className="absolute right-5 top-3 text-6xl font-semibold tracking-tighter text-slate-200/80">
+                    {step.number}
+                  </span>
+
+                  <div className="relative pt-14">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                      Étape {step.number}
+                    </p>
+
+                    <h3 className="mt-4 text-xl font-semibold text-slate-950">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      {step.description}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* CTA */}
+        <Reveal as="section" delay={290}>
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-primary px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/15 blur-3xl" />
+            <div className="absolute -bottom-28 left-1/4 h-72 w-72 rounded-full bg-blue-950/20 blur-3xl" />
+
+            <div className="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div className="space-y-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-100">
+                  Votre projet
+                </p>
+
+                <h2 className="text-3xl font-semibold tracking-tight !text-white sm:text-4xl lg:text-5xl">
+                  Prêt à créer votre prochaine réalisation ?
+                </h2>
+
+                <p className="max-w-2xl text-base leading-7 text-blue-100">
+                  Présentez-nous votre activité et vos objectifs. Nous vous
+                  proposerons une solution claire, moderne et adaptée à votre
+                  entreprise.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+                <ButtonLink
+                  href="/contact"
+                  variant="ghost"
+                  className="justify-center bg-white text-primary hover:bg-blue-50"
+                >
+                  Demander un devis
+                </ButtonLink>
+
+                <ButtonLink
+                  href="/services"
+                  variant="ghost"
+                  className="justify-center border-white/25 !text-white hover:bg-white/10"
+                >
+                  Voir les services
+                </ButtonLink>
+              </div>
+            </div>
+          </div>
         </Reveal>
       </div>
     </PageShell>

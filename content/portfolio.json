@@ -23,19 +23,19 @@
     ],
     "href": "https://www.westafinedrinks.com"
   },
-  {
-    "name": "Enerchoice",
-    "type": "Plateforme de recrutement",
-    "context": "Plateforme de recrutement ayant besoin d'un site performant pour diffuser ses offres d'emploi et construire sa marque employeur.",
-    "problem": "Les offres d'emploi n'étaient pas visibles sur Google, faute de structure technique adaptée au référencement.",
-    "solution": "Frontend React et backend Express/MongoDB, avec SEO optimisé : données structurées JSON-LD (JobPosting) et balises dynamiques par offre.",
-    "result": "Une meilleure visibilité des annonces dans les moteurs de recherche et une infrastructure fiable pour la gestion des candidatures.",
-    "imageLabel": "Mockup plateforme Enerchoice",
-    "imageAccent": "from-emerald-500/20 via-slate-900 to-slate-950",
-    "imageSrc": "/Enerchoice.webp",
-    "gallery": ["/Enerchoice.webp"],
-    "href": "/projets/enerchoice"
-  },
+ {
+  "name": "Enerchoice",
+  "type": "Plateforme de recrutement",
+  "context": "Plateforme de recrutement ayant besoin d'un site performant pour diffuser ses offres d'emploi et construire sa marque employeur.",
+  "problem": "Les offres d'emploi n'étaient pas visibles sur Google, faute de structure technique adaptée au référencement.",
+  "solution": "Frontend React et backend Express/MongoDB, avec SEO optimisé : données structurées JSON-LD (JobPosting) et balises dynamiques par offre.",
+  "result": "Une meilleure visibilité des annonces dans les moteurs de recherche et une infrastructure fiable pour la gestion des candidatures.",
+  "imageLabel": "Mockup plateforme Enerchoice",
+  "imageAccent": "from-emerald-500/20 via-slate-900 to-slate-950",
+  "imageSrc": "/Enerchoice.webp",
+  "gallery": ["/Enerchoice.webp"],
+  "href": "https://enerchoice.vercel.app"
+},
   {
     "name": "Re-Commencer",
     "type": "Site associatif",
