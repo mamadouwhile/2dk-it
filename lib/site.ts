@@ -1,4 +1,7 @@
-import type { NavigationItem } from "@/types/navigation";
+type NavigationItem = {
+  label: string;
+  href: string;
+};
 
 export const siteConfig = {
   name: "2DK IT",
