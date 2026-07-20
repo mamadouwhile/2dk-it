@@ -1,22 +1,26 @@
 "use client";
 
-import type { ElementType, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/cn";
 
-type RevealProps<TTag extends ElementType = "div"> = {
+type RevealOwnProps<TTag extends ElementType = "div"> = {
   as?: TTag;
   delay?: number;
   className?: string;
   children: ReactNode;
 };
 
+export type RevealProps<TTag extends ElementType = "div"> = RevealOwnProps<TTag> &
+  Omit<ComponentPropsWithoutRef<TTag>, keyof RevealOwnProps<TTag>>;
+
 export function Reveal<TTag extends ElementType = "div">({
   as,
   delay = 0,
   className,
   children,
+  ...props
 }: RevealProps<TTag>) {
   const Component = (as ?? "div") as ElementType;
   const elementRef = useRef<HTMLElement | null>(null);
@@ -60,6 +64,7 @@ export function Reveal<TTag extends ElementType = "div">({
       data-visible={visible ? "true" : "false"}
       className={cn("ds-reveal", className)}
       style={{ ["--reveal-delay" as string]: `${delay}ms` }}
+      {...props}
     >
       {children}
     </Component>
