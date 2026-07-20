@@ -163,7 +163,7 @@ export async function POST(request: Request) {
       {
         ok: false,
         message:
-          "L’envoi email n’est pas disponible pour le moment. Vérifiez la configuration SMTP ou réessayez plus tard.",
+          "L'envoi email n'est pas disponible pour le moment. Vérifiez la configuration SMTP ou réessayez plus tard.",
       },
       { status: 503 },
     );

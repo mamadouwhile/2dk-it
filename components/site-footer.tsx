@@ -121,7 +121,7 @@ export function SiteFooter() {
             </p>
             <CookieConsentPreferencesLink className="inline-flex items-center gap-1 text-xs text-slate-400 transition hover:text-white" />
           </div>
-          <p>Navigation courte, contrastes forts, base prête pour la version finale.</p>
+         <p>2DK IT accompagne les entreprises dans leurs projets web et leurs besoins informatiques.</p>
         </div>
       </div>
     </footer>

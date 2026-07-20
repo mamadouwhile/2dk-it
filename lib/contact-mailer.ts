@@ -49,7 +49,7 @@ function detectSmtpEnvironment(): SmtpEnvironmentStatus {
       missingVariables,
       message:
         `Configuration email incomplète. Variables manquantes: ${missingVariables.join(", ")}. ` +
-        "L’envoi des emails de contact est désactivé tant que cette configuration n’est pas complétée.",
+        "L'envoi des emails de contact est désactivé tant que cette configuration n'est pas complétée.",
     };
   }
 

@@ -27,7 +27,7 @@ const webOffers = [
     audience:
       "Indépendants, commerçants, artisans, associations et petites entreprises.",
     features: [
-      "Jusqu’à 5 pages",
+      "Jusqu'à 5 pages",
       "Design responsive",
       "Formulaire de contact",
       "Optimisation SEO de base",
@@ -47,7 +47,7 @@ const webOffers = [
     audience:
       "Entreprises souhaitant renforcer leur image et générer davantage de contacts.",
     features: [
-      "Jusqu’à 12 pages",
+      "Jusqu'à 12 pages",
       "Design personnalisé",
       "SEO avancé",
       "Animations modernes",
@@ -75,7 +75,7 @@ const webOffers = [
       "Animations premium",
       "SEO approfondi",
       "Fonctionnalités personnalisées",
-      "Espace d’administration",
+      "Espace d'administration",
       "Support prioritaire",
     ],
     duration: "3 à 6 semaines",
@@ -115,7 +115,7 @@ const comparisonRows = [
     premium: "Inclus",
   },
   {
-    feature: "Espace d’administration",
+    feature: "Espace d'administration",
     vitrine: "Non inclus",
     intermediate: "En option",
     premium: "Inclus",
@@ -154,7 +154,7 @@ const itOffers = [
       "Une intervention ponctuelle pour installer, réparer ou configurer votre matériel.",
     features: [
       "Installation de postes",
-      "Configuration d’imprimantes",
+      "Configuration d'imprimantes",
       "Dépannage informatique",
       "Configuration Wi-Fi et réseau",
     ],
@@ -165,10 +165,10 @@ const itOffers = [
     description:
       "Une analyse de votre environnement informatique pour identifier les améliorations utiles.",
     features: [
-      "Analyse de l’existant",
+      "Analyse de l'existant",
       "Recommandations adaptées",
       "Organisation du matériel",
-      "Accompagnement à l’évolution",
+      "Accompagnement à l'évolution",
     ],
   },
 ];
@@ -178,7 +178,7 @@ const strengths = [
     number: "01",
     title: "Un interlocuteur dédié",
     description:
-      "Vous échangez avec une personne qui suit votre demande du début jusqu’à la livraison.",
+      "Vous échangez avec une personne qui suit votre demande du début jusqu'à la livraison.",
   },
   {
     number: "02",
@@ -196,7 +196,7 @@ const strengths = [
     number: "04",
     title: "Un suivi après livraison",
     description:
-      "Nous restons disponibles pour vous accompagner après la mise en ligne ou l’intervention.",
+      "Nous restons disponibles pour vous accompagner après la mise en ligne ou l'intervention.",
   },
 ];
 
@@ -251,19 +251,19 @@ const faqItems = [
       "Un échéancier peut être étudié selon le montant du projet et les conditions définies dans le devis.",
   },
   {
-    question: "L’hébergement et le nom de domaine sont-ils inclus ?",
+    question: "L'hébergement et le nom de domaine sont-ils inclus ?",
     answer:
       "Ils peuvent être intégrés à la proposition. Leur prise en charge est précisée clairement dans le devis avant le lancement du projet.",
   },
   {
     question: "Pourrai-je modifier mon site après sa livraison ?",
     answer:
-      "Cela dépend de la formule et des fonctionnalités choisies. Une interface d’administration ou une prestation de maintenance peut être proposée.",
+      "Cela dépend de la formule et des fonctionnalités choisies. Une interface d'administration ou une prestation de maintenance peut être proposée.",
   },
   {
     question: "Intervenez-vous uniquement pour les professionnels ?",
     answer:
-      "Nos services s’adressent principalement aux indépendants, associations, commerçants, TPE et PME.",
+      "Nos services s'adressent principalement aux indépendants, associations, commerçants, TPE et PME.",
   },
 ];
 
@@ -478,7 +478,7 @@ export default function ServicesPage() {
             <p className="ds-eyebrow">Comparatif</p>
 
             <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Comparez les formules en un coup d’œil.
+              Comparez les formules en un coup d'œil.
             </h2>
           </div>
 
@@ -548,8 +548,8 @@ export default function ServicesPage() {
             </h2>
 
             <p className="text-base leading-7 text-slate-600">
-              2DK IT intervient pour l’installation, la maintenance, le
-              dépannage et l’amélioration de votre environnement informatique.
+              2DK IT intervient pour l'installation, la maintenance, le
+              dépannage et l'amélioration de votre environnement informatique.
             </p>
           </div>
 
@@ -657,7 +657,7 @@ export default function ServicesPage() {
             <p className="ds-eyebrow">Notre méthode</p>
 
             <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-              Un processus simple, du premier échange jusqu’au suivi.
+              Un processus simple, du premier échange jusqu'au suivi.
             </h2>
           </div>
 
@@ -736,7 +736,7 @@ export default function ServicesPage() {
 
                 <p className="max-w-2xl text-sm leading-7 text-slate-700 sm:text-base">
                   Présentez-nous votre activité et votre objectif. Nous vous
-                  orienterons vers l’offre la plus adaptée, sans vous faire
+                  orienterons vers l'offre la plus adaptée, sans vous faire
                   parcourir une longue liste de projets.
                 </p>
               </div>

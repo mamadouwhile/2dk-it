@@ -36,18 +36,18 @@ const strengths = [
 const floatingBadges = [
   {
     icon: "⚡",
-    title: "Sites rapides",
-    subtitle: "Navigation fluide",
+    title: "Rapide à charger",
+    subtitle: "Pour une navigation fluide",
   },
   {
     icon: "▣",
-    title: "Responsive",
-    subtitle: "Parfait sur tous les écrans",
+    title: "Adapté au mobile",
+    subtitle: "Lisible sur tous les écrans",
   },
   {
     icon: "♢",
-    title: "Sécurisé",
-    subtitle: "Données protégées",
+    title: "Conçu avec soin",
+    subtitle: "Clair, fiable et rassurant",
   },
 ];
 
@@ -115,7 +115,7 @@ export default function HomePage() {
                     <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shadow-[0_0_14px_rgba(59,130,246,0.95)]" />
 
                     <span className="text-[0.65rem] font-semibold uppercase tracking-[0.23em] text-slate-300 sm:text-[0.7rem]">
-                      Agence web & IT pour entreprises B2B
+                      Agence web & IT pour entreprises
                     </span>
                   </div>
 
@@ -127,10 +127,8 @@ export default function HomePage() {
                     votre entreprise.
                   </h1>
 
-                  <p className="mt-6 max-w-xl text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">
-                    2DK IT conçoit des sites performants et des services IT
-                    fiables pour vous faire gagner en visibilité, en efficacité
-                    et en sérénité.
+                 <p className="mt-6 max-w-xl text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">
+                    2DK IT conçoit des sites web performants et accompagne les entreprises dans leurs besoins informatiques avec une approche claire, fiable et orientée résultats.
                   </p>
 
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

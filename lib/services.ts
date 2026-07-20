@@ -6,7 +6,9 @@ export type OfferTone = "subtle" | "accent";
 
 export type WebOffer = {
   name: string;
+  commercialName: string;
   tone: OfferTone;
+  priceRange: string;
   summary: string;
   who: string;
   goals: string[];
@@ -43,6 +45,8 @@ function isWebOffer(value: unknown): value is WebOffer {
   return (
     (value.tone === "subtle" || value.tone === "accent") &&
     typeof value.name === "string" &&
+    typeof value.commercialName === "string" &&
+    typeof value.priceRange === "string" &&
     typeof value.summary === "string" &&
     typeof value.who === "string" &&
     typeof value.personalization === "string" &&
@@ -78,5 +82,3 @@ export function loadServicesContent(): ServicesContent {
 
 const servicesContentValue = loadServicesContent();
 export { servicesContentValue as servicesContent };
-
-

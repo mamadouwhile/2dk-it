@@ -1,32 +1,38 @@
 {
   "webOffers": [
     {
-      "name": "Site Vitrine",
+      "name": "Start Digital",
+      "commercialName": "Site Vitrine",
       "tone": "subtle",
-      "summary": "Pour présenter l’essentiel avec sobriété et crédibilité.",
-      "who": "Entreprises qui veulent une présence web claire, rapide à comprendre et simple à maintenir.",
-      "goals": ["Présenter l’offre", "Rassurer vite", "Générer des prises de contact"],
-      "deliverables": ["Arborescence simple", "Pages clés", "CTA visibles", "Base SEO"],
+      "priceRange": "À partir de 800€ HT",
+      "summary": "Pour présenter l'essentiel avec sobriété et crédibilité, rapidement en ligne.",
+      "who": "TPE, startups et indépendants qui veulent une présence web claire, rapide à comprendre et simple à maintenir.",
+      "goals": ["Présenter l'offre", "Rassurer vite", "Générer des prises de contact"],
+      "deliverables": ["Arborescence simple", "Pages clés", "CTA visibles", "Base SEO", "Hébergement et support 6 mois inclus"],
       "benefits": ["Lecture immédiate", "Site léger", "Mise en ligne rapide"],
       "personalization": "Niveau de personnalisation essentiel, centré sur la clarté et la conversion."
     },
     {
-      "name": "Site Intermédiaire",
+      "name": "Grow Business",
+      "commercialName": "Site Intermédiaire",
       "tone": "accent",
-      "summary": "Pour structurer un discours plus riche et mieux qualifier les demandes.",
-      "who": "Entreprises qui ont besoin de plus de contenu, de réassurance et d’un parcours plus guidé.",
+      "priceRange": "Sur devis, selon intégrations",
+      "summary": "Pour structurer un discours plus riche, intégrer vos outils métier et mieux qualifier les demandes.",
+      "who": "Entreprises en croissance qui ont besoin de plus de contenu, de réassurance et d'un parcours plus guidé.",
       "goals": ["Expliquer plus en détail", "Montrer des preuves", "Mieux convertir"],
-      "deliverables": ["Sections renforcées", "Blocs de réassurance", "Comparatifs", "Formulaire optimisé"],
+      "deliverables": ["Sections renforcées", "Blocs de réassurance", "Comparatifs", "Formulaire optimisé", "Intégration CRM/ERP possible", "Maintenance annuelle incluse"],
       "benefits": ["Message plus solide", "Conversion plus nette", "Image plus premium"],
-      "personalization": "Niveau de personnalisation intermédiaire avec plus d’adaptation au positionnement et au parcours de lecture."
+      "personalization": "Niveau de personnalisation intermédiaire avec plus d'adaptation au positionnement et au parcours de lecture."
     },
     {
-      "name": "Site Premium",
+      "name": "Scale Enterprise",
+      "commercialName": "Site Premium",
       "tone": "subtle",
-      "summary": "Pour une présence plus forte, plus complète et plus différenciante.",
-      "who": "Entreprises qui veulent une image haut de gamme et un site pensé pour convaincre avec précision.",
-      "goals": ["Renforcer la marque", "Montrer le niveau d’expertise", "Soutenir la décision"],
-      "deliverables": ["Direction artistique poussée", "Parcours complet", "Réassurance avancée", "Composants sur mesure"],
+      "priceRange": "Sur devis, accompagnement dédié",
+      "summary": "Pour une présence plus forte, plus complète et une infrastructure pensée pour durer.",
+      "who": "Grandes entreprises et groupes qui veulent une image haut de gamme et une plateforme évolutive.",
+      "goals": ["Renforcer la marque", "Montrer le niveau d'expertise", "Soutenir la décision"],
+      "deliverables": ["Direction artistique poussée", "Parcours complet", "Réassurance avancée", "Composants sur mesure", "Infrastructure cloud", "Support et audits réguliers"],
       "benefits": ["Impact plus fort", "Perception premium", "Expérience plus aboutie"],
       "personalization": "Niveau de personnalisation élevé, avec une composition plus riche et un travail de finesse sur les détails."
     }
@@ -48,16 +54,15 @@
   "chooseSteps": [
     {
       "title": "Vous voulez aller vite",
-      "description": "Le Site Vitrine suffit si l’objectif est d’être crédible, lisible et contactable rapidement."
+      "description": "Start Digital suffit si l'objectif est d'être crédible, lisible et contactable rapidement."
     },
     {
       "title": "Vous devez convaincre davantage",
-      "description": "Le Site Intermédiaire est le bon choix si le site doit expliquer plus, rassurer plus et convertir mieux."
+      "description": "Grow Business est le bon choix si le site doit expliquer plus, rassurer plus et convertir mieux."
     },
     {
       "title": "Vous cherchez une image forte",
-      "description": "Le Site Premium s’impose si la qualité perçue et la différenciation doivent être visibles dès l’arrivée."
+      "description": "Scale Enterprise s'impose si la qualité perçue et la différenciation doivent être visibles dès l'arrivée."
     }
   ]
 }
-

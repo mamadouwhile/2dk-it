@@ -77,7 +77,7 @@ export function LegalPage({
     { label: "Adresse", value: companyAddress, hint: "Adresse postale complète centralisée dans `lib/site.ts`." },
     { label: "SIREN / SIRET", value: `${companySiren} / SIRET à compléter`, hint: "Identifiants légaux à renseigner depuis `lib/site.ts`." },
     { label: "Email", value: dpoEmail, hint: "Adresse de contact RGPD ou DPO centralisée dans `lib/site.ts`." },
-    { label: "Téléphone", value: siteConfig.contactDetails.phone, hint: "Numéro joignable si applicable." },
+    { label: "Téléphone", value: siteConfig.contactDetails?.phone ?? "À compléter", hint: "Numéro joignable si applicable." },
     { label: "Directeur de publication", value: companyName, hint: "Valeur partagée et facilement remplaçable depuis `lib/site.ts`." },
     { label: "Hébergeur", value: hostingProvider, hint: "Nom, adresse et contact de l’hébergeur centralisés dans `lib/site.ts`." },
   ];

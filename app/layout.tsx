@@ -1,32 +1,18 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
-
-import { StructuredData } from "@/components/structured-data";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.2dk-it.fr";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "2DK IT",
     template: "%s | 2DK IT",
   },
   description:
-    "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
+    "Création de sites web et accompagnement IT pour les entreprises qui veulent une présence en ligne claire, crédible et efficace.",
   applicationName: "2DK IT",
-  creator: "2DK IT",
-  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
@@ -34,16 +20,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "2DK IT",
+    url: siteUrl,
     title: "2DK IT",
     description:
-      "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
-    url: siteUrl,
+      "Création de sites web et accompagnement IT pour les entreprises qui veulent une présence en ligne claire, crédible et efficace.",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "2DK IT - Sites web et services IT pour entreprises B2B",
+        alt: "2DK IT",
       },
     ],
   },
@@ -51,50 +37,34 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "2DK IT",
     description:
-      "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
+      "Création de sites web et accompagnement IT pour les entreprises qui veulent une présence en ligne claire, crédible et efficace.",
     images: ["/opengraph-image"],
   },
   robots: {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#020817",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
-  const structuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "2DK IT",
-      url: siteUrl,
-      logo: `${siteUrl}/opengraph-image`,
-      email: "contact@2dk-it.fr",
-      sameAs: [],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: "2DK IT",
-      url: siteUrl,
-      description:
-        "2DK IT conçoit des sites web sobres et accompagne les besoins IT avec une approche claire, fiable et B2B.",
-      inLanguage: "fr-FR",
-    },
-  ];
-
   return (
-    <html
-      lang="fr"
-      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <StructuredData data={structuredData} />
-        {children}
-      </body>
+    <html lang="fr">
+      <body>{children}</body>
     </html>
   );
 }

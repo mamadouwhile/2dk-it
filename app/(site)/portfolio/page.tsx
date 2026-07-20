@@ -198,18 +198,18 @@ export default function PortfolioPage() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-  <a
-    href="#realisations"
-    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg"
-  >
-    Voir les réalisations
-    <ArrowIcon />
-  </a>
+              <a
+                href="#realisations"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                Voir les réalisations
+                <ArrowIcon />
+              </a>
 
-  <ButtonLink href="/contact" variant="ghost">
-    Parler de mon projet
-  </ButtonLink>
-</div>
+              <ButtonLink href="/contact" variant="ghost">
+                Parler de mon projet
+              </ButtonLink>
+            </div>
           </div>
 
           <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-950 p-6 shadow-2xl sm:p-8">

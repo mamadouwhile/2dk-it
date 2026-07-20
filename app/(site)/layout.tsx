@@ -18,7 +18,9 @@ export default async function SiteLayout({
   children: ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const initialConsent = parseCookieConsent(cookieStore.get(COOKIE_CONSENT_COOKIE_NAME)?.value ?? null);
+  const initialConsent = parseCookieConsent(
+    cookieStore.get(COOKIE_CONSENT_COOKIE_NAME)?.value ?? null,
+  );
 
   return (
     <CookieConsentProvider initialConsent={initialConsent}>

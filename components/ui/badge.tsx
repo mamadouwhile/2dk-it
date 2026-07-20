@@ -8,7 +8,7 @@ type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
   children: ReactNode;
   tone?: BadgeTone;
 };
-
+                
 const toneStyles: Record<BadgeTone, string> = {
   default: "border-border bg-white text-slate-700",
   accent: "border-primary/20 bg-primary-soft text-primary",
