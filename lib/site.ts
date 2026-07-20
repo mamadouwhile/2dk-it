@@ -31,6 +31,8 @@ export const siteConfig = {
     city: "À compléter",
     postalCode: "À compléter",
     country: "France",
+    responseTime: "Sous 24 à 48 h",
+    availability: "Lundi au vendredi, de 9h à 18h",
   },
 
   companyDetails: {
@@ -74,4 +76,3 @@ export const companySiren = siteConfig.companyDetails.siren;
 export const companySiret = siteConfig.companyDetails.siret;
 export const dpoEmail = siteConfig.contactDetails.email;
 export const hostingProvider = siteConfig.companyDetails.host;
-
